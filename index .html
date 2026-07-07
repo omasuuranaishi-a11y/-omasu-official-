@@ -1,0 +1,1689 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>星よみ専門家おます | 公式サイト</title>
+<meta name="description" content="星よみ専門家おますの公式サイト。星よみを現実に落とし込みながら、日常生活の中で小さく積み上げていくヒントをお届けします。40代からが本番！">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Shippori+Mincho+B1:wght@500;700&family=Zen+Maru+Gothic:wght@400;500;700&family=Klee+One:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ivory:#f8f5ec;
+    --card:#fffdf7;
+    --green:#6e8784;        /* アイコンと同じ緑 */
+    --green-hi:#7f9793;
+    --green-deep:#54706b;
+    --green-dark:#455e59;
+    --green-ink:#3d524c;
+    --cream:#f2ead6;
+    --gold:#c9a86a;
+    --murasaki:#8d7bb0;
+    --lavender:#cfc5e3;
+    --body:#55625b;
+    --line:#c9d3cc;
+    --maxw:860px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--ivory);
+    color:var(--body);
+    font-family:'Zen Maru Gothic',sans-serif;
+    line-height:2.05;
+    letter-spacing:.05em;
+    font-feature-settings:"palt";
+  }
+  ::selection{background:var(--green);color:#fff}
+  h1,h2,h3{font-family:'Klee One',cursive;font-weight:600;color:var(--green-ink)}
+  a{color:var(--murasaki);text-decoration:none;transition:opacity .25s}
+  a:hover{opacity:.75}
+  a:focus-visible{outline:2px solid var(--murasaki);outline-offset:4px;border-radius:8px}
+
+  .obi{
+    font-family:'Klee One',cursive;font-weight:600;
+    font-size:.9rem;letter-spacing:.24em;color:var(--green);
+  }
+  .hoshikugiri{
+    display:flex;justify-content:center;gap:.8rem;
+    color:var(--gold);font-size:.85rem;letter-spacing:.4em;margin-top:.4rem;
+  }
+
+  /* ---------- nav ---------- */
+  nav{
+    position:sticky;top:0;z-index:50;
+    display:flex;align-items:center;justify-content:space-between;
+    gap:1rem;
+    padding:.65rem 1.2rem;
+    background:rgba(248,245,236,.86);
+    backdrop-filter:blur(8px);
+    -webkit-backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .logo{
+    font-family:'Caveat',cursive;
+    font-weight:600;
+    font-size:1.6rem;
+    color:var(--green-ink);
+    line-height:1;
+  }
+  nav ul{
+    display:flex;gap:1.1rem;list-style:none;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+  }
+  nav ul a{
+    font-size:.8rem;letter-spacing:.14em;color:var(--green-ink);
+    white-space:nowrap;font-weight:500;
+  }
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;
+    min-height:94svh;
+    display:flex;align-items:center;justify-content:center;
+    text-align:center;overflow:hidden;
+    padding:4rem 1.5rem 0;
+    background:
+      radial-gradient(120% 90% at 20% 15%, rgba(242,234,214,.13) 0%, rgba(242,234,214,0) 45%),
+      radial-gradient(90% 70% at 80% 30%, var(--green-hi) 0%, rgba(127,151,147,0) 60%),
+      radial-gradient(110% 90% at 50% 100%, var(--green-deep) 0%, rgba(84,112,107,0) 65%),
+      linear-gradient(175deg, var(--green) 0%, #66807c 55%, var(--green-deep) 100%);
+    color:var(--cream);
+  }
+  /* 紙の粒子（リッチな質感） */
+  .hero::after{
+    content:"";
+    position:absolute;inset:0;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+    opacity:.07;
+    mix-blend-mode:overlay;
+    pointer-events:none;
+  }
+  .hero-sky{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+
+  /* 星のまたたき */
+  .tw{animation:twinkle 3.6s ease-in-out infinite}
+  .tw:nth-of-type(2n){animation-delay:1.2s;animation-duration:4.4s}
+  .tw:nth-of-type(3n){animation-delay:2.1s;animation-duration:5.2s}
+  .tw:nth-of-type(5n){animation-delay:.6s}
+  @keyframes twinkle{0%,100%{opacity:.9}50%{opacity:.25}}
+  /* 月のゆらぎ */
+  .moon-g{animation:moonfloat 9s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+  @keyframes moonfloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+  /* 光線の呼吸 */
+  #rays{animation:breathe 7s ease-in-out infinite}
+  @keyframes breathe{0%,100%{opacity:.5}50%{opacity:.2}}
+  /* 流れ星 */
+  .shooting{
+    position:absolute;
+    top:14%;left:-6%;
+    width:130px;height:2px;
+    background:linear-gradient(90deg, rgba(242,234,214,0), rgba(242,234,214,.95));
+    border-radius:2px;
+    transform:rotate(16deg);
+    opacity:0;
+    animation:shoot 9s ease-in infinite;
+    animation-delay:3s;
+  }
+  @keyframes shoot{
+    0%{opacity:0;transform:translate(0,0) rotate(16deg)}
+    3%{opacity:1}
+    9%{opacity:0;transform:translate(60vw,18vh) rotate(16deg)}
+    100%{opacity:0;transform:translate(60vw,18vh) rotate(16deg)}
+  }
+
+  .hero-inner{
+    position:relative;z-index:1;max-width:640px;
+    /* 環は「幅か高さの大きい方」に合わせて拡大されるため、余白も同じ基準で確保する */
+    padding-bottom:260px;
+    padding-bottom:max(24vw, 36vh);
+    padding-bottom:max(24vw, 36svh);
+  }
+  .hero .obi{color:var(--cream);opacity:.85}
+  .hero h1{
+    margin-top:1.1rem;
+    font-size:clamp(1.1rem,3.4vw,1.4rem);
+    letter-spacing:.3em;color:var(--cream);
+  }
+  .hero h1 .small{
+    display:block;font-size:.62em;letter-spacing:.5em;opacity:.7;margin-bottom:.6em;
+    font-family:'Caveat',cursive;font-weight:500;letter-spacing:.18em;font-size:1em;
+  }
+  .thesis{
+    margin-top:2.5rem;
+    font-family:'Klee One',cursive;font-weight:600;
+    font-size:clamp(1.15rem,3.4vw,1.5rem);
+    letter-spacing:.14em;line-height:2.4;color:#fff;
+    transform:rotate(-.5deg);
+    text-shadow:0 1px 12px rgba(61,82,76,.35);
+  }
+  .motto{
+    display:inline-block;margin-top:2rem;
+    font-family:'Klee One',cursive;font-weight:600;
+    font-size:.9rem;letter-spacing:.14em;color:var(--cream);
+    border:1.5px solid rgba(242,234,214,.75);
+    border-radius:999px;padding:.5em 1.8em;transform:rotate(-1.5deg);
+  }
+  /* ヒーローの入場アニメーション */
+  .rise{opacity:0;transform:translateY(18px);animation:rise 1s ease-out forwards}
+  .rise.d1{animation-delay:.15s}.rise.d2{animation-delay:.35s}.rise.d3{animation-delay:.6s}.rise.d4{animation-delay:.85s}
+  @keyframes rise{to{opacity:1;transform:none}}
+
+  /* ---------- 満ちていく月 ---------- */
+  .michiru{text-align:center;padding:3rem 1.5rem 0}
+  .michiru .cap{
+    font-family:'Klee One',cursive;font-size:.84rem;
+    letter-spacing:.3em;color:var(--green);margin-top:.7rem;
+  }
+
+  /* ---------- 新着お知らせ ---------- */
+  .news-list{max-width:620px;margin:0 auto}
+  .news-item{
+    display:block;
+    border-bottom:1px solid var(--line);
+    padding:1.15rem .3rem;
+    color:var(--body);
+  }
+  a.news-item:hover{opacity:1;background:#fbfaf3}
+  .news-date{
+    font-family:'Klee One',cursive;
+    font-weight:600;
+    font-size:.8rem;
+    letter-spacing:.16em;
+    color:var(--gold);
+    display:block;
+    line-height:1.6;
+  }
+  .news-text{font-size:.95rem;line-height:1.9;color:var(--green-ink)}
+  .news-btns{
+    display:flex;flex-wrap:wrap;justify-content:center;gap:1rem;
+    margin-top:2.2rem;
+  }
+  .btn-hand{
+    position:relative;
+    display:inline-block;
+    font-family:'Klee One',cursive;
+    font-weight:600;
+    font-size:.92rem;
+    letter-spacing:.14em;
+    color:var(--green-ink);
+    background:var(--card);
+    border:1.5px solid var(--green);
+    border-radius:8px;
+    padding:.75em 2em;
+  }
+  .btn-hand::before{
+    content:"";
+    position:absolute;inset:4px;
+    border:1px solid var(--green);
+    opacity:.4;border-radius:5px;
+    pointer-events:none;
+  }
+  .btn-hand:hover{background:var(--green);color:#fff;opacity:1}
+
+  /* ---------- sections ---------- */
+  section{max-width:var(--maxw);margin:0 auto;padding:4.4rem 1.5rem}
+  .sec-head{text-align:center;margin-bottom:2.7rem}
+  .sec-head h2{
+    font-size:clamp(1.3rem,4vw,1.65rem);
+    letter-spacing:.18em;margin-top:.8rem;transform:rotate(-.4deg);
+  }
+  p+p{margin-top:1.3em}
+  em{font-style:normal;color:var(--murasaki);font-weight:500}
+
+  /* スクロールで浮かび上がる */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s ease}
+  .reveal.on{opacity:1;transform:none}
+
+  /* タロットカード風の枠 */
+  .tarot-card{
+    position:relative;background:var(--card);
+    border:1.5px solid var(--green);border-radius:6px;
+    padding:2.5rem 2.1rem;
+  }
+  .tarot-card::before{
+    content:"";position:absolute;inset:8px;
+    border:1px solid var(--green);opacity:.4;border-radius:3px;pointer-events:none;
+  }
+  .kado{position:absolute;color:var(--gold);font-size:.9rem;line-height:1}
+  .kado.tl{top:14px;left:16px}.kado.tr{top:14px;right:16px}
+  .kado.bl{bottom:14px;left:16px}.kado.br{bottom:14px;right:16px}
+
+  /* ---------- about ---------- */
+  .about-grid{display:grid;grid-template-columns:1fr;gap:1.9rem}
+  .prof-head{display:flex;align-items:center;gap:1.3rem;margin-bottom:1.4rem}
+  .prof-icon{
+    width:96px;height:96px;flex:0 0 auto;
+    border-radius:50%;
+    border:2.5px solid var(--green);
+    box-shadow:0 0 0 5px var(--ivory), 0 0 0 6.5px var(--gold);
+    object-fit:cover;
+  }
+  .prof-name{font-family:'Klee One',cursive;font-weight:600;color:var(--green-ink)}
+  .prof-name .en{
+    display:block;font-family:'Caveat',cursive;font-weight:500;
+    font-size:1.3rem;color:var(--green);line-height:1.2;
+  }
+  .about-note{
+    border-top:1px solid var(--line);padding-top:1.4rem;
+    font-size:.86rem;line-height:2.15;
+  }
+  .about-note b{color:var(--green-ink);font-weight:700}
+
+  /* ---------- services ---------- */
+  .services{display:grid;grid-template-columns:1fr;gap:1.4rem}
+  .service{
+    position:relative;background:var(--card);
+    border:1.5px solid var(--green);border-radius:6px;
+    padding:2.2rem 1.8rem 2.1rem;text-align:center;
+  }
+  .service::before{
+    content:"";position:absolute;inset:7px;
+    border:1px solid var(--green);opacity:.4;border-radius:3px;pointer-events:none;
+  }
+  .service .icon{margin-bottom:.9rem}
+  .service .num{
+    font-family:'Klee One',cursive;font-weight:600;
+    font-size:.8rem;letter-spacing:.32em;color:var(--gold);
+  }
+  .service h3{font-size:1.12rem;letter-spacing:.12em;margin:.45rem 0 .8rem}
+  .service p{font-size:.9rem;line-height:2;text-align:left}
+  .service .go{
+    display:inline-block;margin-top:1.3rem;
+    font-size:.82rem;font-weight:500;letter-spacing:.16em;
+    color:#fff;background:var(--green);border-radius:999px;padding:.55em 1.7em;
+  }
+  .service .go:hover{background:var(--green-dark);opacity:1}
+
+  /* ---------- apps ---------- */
+  .apps{display:grid;grid-template-columns:1fr;gap:1.2rem}
+  .app-card{
+    display:block;background:var(--card);
+    border:1.5px solid var(--line);border-radius:20px;
+    padding:1.8rem 1.7rem;
+    transition:transform .25s,border-color .25s;
+  }
+  .app-card:hover{opacity:1;transform:translateY(-3px);border-color:var(--green)}
+  .app-card h3{font-size:1rem;letter-spacing:.1em}
+  .app-card p{font-size:.85rem;margin-top:.55rem;line-height:1.95}
+  .app-card .url{
+    display:block;margin-top:.9rem;
+    font-family:'Klee One',cursive;font-weight:600;
+    font-size:.78rem;letter-spacing:.1em;color:var(--murasaki);
+  }
+
+  /* ---------- channels ---------- */
+  .ch-featured{display:grid;grid-template-columns:1fr;gap:1.1rem;margin-bottom:1.1rem}
+  .ch-big{
+    position:relative;display:block;
+    background:linear-gradient(160deg,var(--green) 0%,var(--green-deep) 100%);
+    color:var(--cream);
+    border-radius:20px;
+    padding:1.7rem 1.6rem 1.6rem;
+    overflow:hidden;
+  }
+  .ch-big:hover{opacity:.92}
+  .ch-big .st{position:absolute;color:rgba(242,234,214,.5);font-size:.8rem}
+  .ch-big .st.a{top:12px;right:16px}
+  .ch-big .st.b{bottom:12px;right:44px;font-size:.6rem}
+  .ch-big .ch-name{
+    font-family:'Klee One',cursive;font-weight:600;
+    font-size:1.15rem;letter-spacing:.14em;color:#fff;
+  }
+  .ch-big .ch-desc{display:block;font-size:.82rem;margin-top:.5rem;line-height:1.9;color:var(--cream)}
+  .ch-big .tag{
+    display:inline-block;margin-bottom:.6rem;
+    font-family:'Klee One',cursive;font-weight:600;
+    font-size:.7rem;letter-spacing:.22em;
+    border:1px solid rgba(242,234,214,.7);
+    border-radius:999px;padding:.2em 1em;color:var(--cream);
+  }
+  .channels{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+  .channel{
+    display:block;background:var(--card);
+    border:1.5px solid var(--line);border-radius:16px;
+    padding:1.4rem 1.3rem;
+  }
+  .channel:hover{opacity:1;border-color:var(--green);background:#fbfaf3}
+  .channel .ch-name{
+    font-family:'Klee One',cursive;font-weight:600;
+    font-size:1rem;letter-spacing:.12em;color:var(--green-ink);
+  }
+  .channel .ch-desc{display:block;font-size:.78rem;margin-top:.35rem;line-height:1.85}
+
+  /* ---------- voices（お客さまの声） ---------- */
+  .rating-strip{
+    text-align:center;
+    margin-bottom:2.2rem;
+  }
+  .rating-strip .big-stars{
+    color:var(--gold);
+    font-size:1.5rem;
+    letter-spacing:.28em;
+  }
+  .rating-strip .num-label{
+    display:block;
+    margin-top:.3rem;
+    font-family:'Klee One',cursive;
+    font-weight:600;
+    font-size:.95rem;
+    letter-spacing:.14em;
+    color:var(--green-ink);
+  }
+  .voices{
+    columns:1;
+    column-gap:1.1rem;
+  }
+  .voice{
+    position:relative;
+    display:inline-block;
+    width:100%;
+    break-inside:avoid;
+    background:var(--card);
+    border:1.5px solid var(--green);
+    border-radius:6px;
+    padding:1.6rem 1.5rem 1.4rem;
+    margin:0 0 1.1rem;
+  }
+  .voice::before{
+    content:"";
+    position:absolute;inset:6px;
+    border:1px solid var(--green);
+    opacity:.35;border-radius:3px;
+    pointer-events:none;
+  }
+  .voice .stars{
+    color:var(--gold);
+    font-size:.85rem;
+    letter-spacing:.22em;
+    margin-bottom:.5rem;
+  }
+  .voice p{
+    font-size:.86rem;
+    line-height:1.95;
+  }
+  .voice .who{
+    margin-top:.9rem;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:.6rem;
+    flex-wrap:wrap;
+  }
+  .voice .name{
+    font-family:'Klee One',cursive;
+    font-weight:600;
+    font-size:.8rem;
+    letter-spacing:.14em;
+    color:var(--green-ink);
+  }
+  .voice .item-tag{
+    font-size:.68rem;
+    letter-spacing:.08em;
+    color:var(--green);
+    border:1px solid var(--line);
+    border-radius:999px;
+    padding:.2em .9em;
+    white-space:nowrap;
+  }
+  .voices-more{
+    text-align:center;
+    margin-top:1.8rem;
+  }
+  .voices-more a{
+    display:inline-block;
+    font-size:.85rem;
+    font-weight:500;
+    letter-spacing:.16em;
+    color:#fff;
+    background:var(--green);
+    border-radius:999px;
+    padding:.7em 2.2em;
+  }
+  .voices-more a:hover{background:var(--green-deep);opacity:1}
+
+  /* ---------- kantei（メール鑑定） ---------- */
+  .kantei-chip{
+    display:inline-block;
+    font-family:'Klee One',cursive;
+    font-weight:600;
+    font-size:.82rem;
+    letter-spacing:.2em;
+    color:#fff;
+    background:var(--murasaki);
+    border-radius:999px;
+    padding:.35em 1.4em;
+    margin-bottom:1.2rem;
+  }
+  .kantei-lead{
+    text-align:left;
+    max-width:600px;
+    margin:0 auto;
+    font-size:.95rem;
+  }
+  .naiyou{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:1.3rem;
+    margin-top:2rem;
+  }
+  .naiyou-item{text-align:center}
+  .naiyou-num{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:2.2em;height:2.2em;
+    border:1.5px solid var(--gold);
+    border-radius:50%;
+    font-family:'Klee One',cursive;
+    font-weight:600;
+    color:var(--gold);
+  }
+  .naiyou-item h3{
+    font-size:1.05rem;
+    letter-spacing:.12em;
+    margin:.7rem 0 .5rem;
+  }
+  .naiyou-item p{font-size:.87rem;line-height:1.95;text-align:left}
+
+  .preview-wrap{text-align:center;margin-top:2.8rem}
+  .preview-wrap svg{width:100%;max-width:430px;height:auto}
+  .preview-cap{
+    font-size:.82rem;
+    max-width:480px;
+    margin:.9rem auto 0;
+    line-height:1.9;
+  }
+
+  .flow-head{text-align:center;margin:3.2rem 0 1.5rem}
+  .flow{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:1rem;
+  }
+  .flow-step{
+    position:relative;
+    background:var(--card);
+    border:1.5px solid var(--line);
+    border-radius:16px;
+    padding:1.6rem 1.2rem 1.4rem;
+    text-align:center;
+  }
+  .step-num{
+    position:absolute;
+    top:-.9em;left:50%;
+    transform:translateX(-50%);
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:1.9em;height:1.9em;
+    background:var(--gold);
+    color:#fff;
+    border-radius:50%;
+    font-family:'Klee One',cursive;
+    font-weight:600;
+    font-size:.9rem;
+  }
+  .flow-step .f-icon{margin:.4rem 0 .5rem}
+  .flow-step h3{font-size:.98rem;letter-spacing:.08em}
+  .flow-step p{font-size:.8rem;line-height:1.85;margin-top:.4rem}
+
+  .kantei-cta{text-align:center;margin-top:2.8rem}
+  .cta-big{
+    display:inline-block;
+    background:var(--murasaki);
+    color:#fff;
+    font-weight:700;
+    font-size:1.05rem;
+    letter-spacing:.18em;
+    border-radius:999px;
+    padding:1.1em 3em;
+    box-shadow:0 5px 0 rgba(77,64,110,.28);
+  }
+  .cta-big:hover{opacity:.88}
+  .cta-sub{
+    display:block;
+    margin-top:1.1rem;
+    font-size:.84rem;
+    letter-spacing:.08em;
+    color:var(--green-deep);
+  }
+
+  /* ---------- books（実践note） ---------- */
+  .books-lead{
+    text-align:center;
+    max-width:560px;
+    margin:0 auto 2rem;
+    font-size:.92rem;
+  }
+  .books{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:1.2rem;
+  }
+  .book{
+    display:block;
+    background:var(--card);
+    border:1.5px solid var(--line);
+    border-radius:16px;
+    padding:1.8rem 1.7rem;
+    transition:transform .25s,border-color .25s;
+  }
+  .book:hover{opacity:1;transform:translateY(-3px);border-color:var(--murasaki)}
+  .book-tag{
+    display:inline-block;
+    font-size:.7rem;
+    letter-spacing:.14em;
+    color:var(--murasaki);
+    border:1px solid var(--murasaki);
+    border-radius:999px;
+    padding:.2em 1em;
+    margin-bottom:.8rem;
+  }
+  .book h3{font-size:1.02rem;letter-spacing:.06em;line-height:1.8}
+  .book p{font-size:.86rem;margin-top:.6rem;line-height:1.95}
+  .book-go{
+    display:block;
+    margin-top:.9rem;
+    font-family:'Klee One',cursive;
+    font-weight:600;
+    font-size:.8rem;
+    letter-spacing:.1em;
+    color:var(--murasaki);
+  }
+
+  /* ---------- seiza（12星座の帯） ---------- */
+  .seiza-band{
+    margin-top:3.4rem;
+    padding:3.8rem 1.5rem 4rem;
+    text-align:center;
+    background:
+      radial-gradient(90% 70% at 15% 20%, #7fa189 0%, rgba(127,161,137,0) 55%),
+      radial-gradient(100% 80% at 85% 90%, #54706b 0%, rgba(84,112,107,0) 60%),
+      linear-gradient(170deg, #6e8784 0%, #5f7f74 60%, #54706b 100%);
+  }
+  .seiza-band .obi{color:var(--cream);opacity:.9}
+  .seiza-band h2{
+    color:#fff;
+    font-size:clamp(1.25rem,4vw,1.55rem);
+    letter-spacing:.2em;
+    margin-top:.7rem;
+    transform:rotate(-.4deg);
+  }
+  .hm-grid{
+    max-width:760px;
+    margin:2.3rem auto 0;
+    display:grid;
+    grid-template-columns:1fr;
+    gap:1rem;
+  }
+  .hm-card{
+    background:rgba(255,253,247,.07);
+    border:1px solid rgba(242,234,214,.35);
+    border-radius:16px;
+    padding:1.7rem 1.2rem 1.5rem;
+    text-align:center;
+  }
+  .hm-art{display:flex;justify-content:center;min-height:60px}
+  .hm-card svg{width:60px;height:60px;display:block}
+  .hm-label{
+    margin-top:.8rem;
+    font-family:'Klee One',cursive;
+    font-weight:600;
+    font-size:1rem;
+    letter-spacing:.1em;
+    color:#fff;
+  }
+  .hm-label b{color:var(--gold);font-weight:600;letter-spacing:.12em}
+  .hm-sub{font-size:.78rem;color:var(--cream);opacity:.85;margin-top:.3rem}
+  .hm-next{
+    margin-top:1.7rem;
+    font-family:'Klee One',cursive;
+    font-weight:600;
+    font-size:.9rem;
+    letter-spacing:.14em;
+    color:var(--cream);
+  }
+  .hm-btn{
+    display:inline-block;
+    margin-top:1.5rem;
+    font-family:'Klee One',cursive;
+    font-weight:600;
+    font-size:.85rem;
+    letter-spacing:.16em;
+    color:var(--cream);
+    background:none;
+    border:1.5px solid rgba(242,234,214,.7);
+    border-radius:999px;
+    padding:.55em 1.8em;
+    cursor:pointer;
+    transition:opacity .25s;
+  }
+  .hm-btn:hover{opacity:.72}
+  .seiza-cap{
+    margin-top:2.4rem;
+    font-size:.85rem;
+    color:var(--cream);
+  }
+  .seiza-cap a{
+    color:#fff;
+    font-weight:500;
+    border-bottom:1px solid rgba(242,234,214,.6);
+    padding-bottom:.1em;
+  }
+
+  /* ---------- footer ---------- */
+  footer{text-align:center;padding:3.6rem 1.5rem 2.8rem;font-size:.75rem;letter-spacing:.18em}
+  footer .stars{color:var(--gold);letter-spacing:.6em;font-size:.9rem}
+  footer .mark{
+    font-family:'Klee One',cursive;font-weight:600;
+    font-size:1rem;letter-spacing:.24em;color:var(--green-ink);
+    display:block;margin:.9rem 0;
+  }
+
+  @media (min-width:680px){
+    .about-grid{grid-template-columns:1.9fr 1fr;align-items:start}
+    .about-note{border-top:none;border-left:1px solid var(--line);padding:0 0 0 1.7rem}
+    .services{grid-template-columns:repeat(3,1fr)}
+    .apps{grid-template-columns:repeat(3,1fr)}
+    .ch-featured{grid-template-columns:1fr 1fr}
+    .channels{grid-template-columns:repeat(3,1fr)}
+    .voices{columns:3}
+    .naiyou{grid-template-columns:repeat(3,1fr)}
+    .flow{grid-template-columns:repeat(4,1fr)}
+    .books{grid-template-columns:1fr 1fr}
+    .hm-grid{grid-template-columns:repeat(3,1fr)}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .tw,.moon-g,#rays,.shooting{animation:none}
+    .rise{animation:none;opacity:1;transform:none}
+    .reveal{opacity:1;transform:none;transition:none}
+    .app-card:hover{transform:none}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav>
+  <span class="logo">Omasu</span>
+  <ul>
+    <li><a href="#news">お知らせ</a></li>
+    <li><a href="#kantei">メール鑑定</a></li>
+    <li><a href="#about">おますについて</a></li>
+    <li><a href="#services">できること</a></li>
+    <li><a href="#channels">SNS・便り</a></li>
+  </ul>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <span class="shooting" aria-hidden="true"></span>
+
+  <svg class="hero-sky" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+    <defs>
+      <path id="st5" d="M0 -9 L2.3 -2.6 L9 -2.2 L3.6 1.9 L5.4 8.4 L0 4.6 L-5.4 8.4 L-3.6 1.9 L-9 -2.2 L-2.3 -2.6 Z"/>
+      <path id="st4" d="M0 -10 Q1.2 -1.2 10 0 Q1.2 1.2 0 10 Q-1.2 1.2 -10 0 Q-1.2 -1.2 0 -10 Z"/>
+    </defs>
+
+    <g fill="#f2ead6">
+      <use class="tw" href="#st5" x="140" y="150" transform="rotate(12 140 150)"/>
+      <use class="tw" href="#st4" x="300" y="90"  transform="scale(.8)"/>
+      <use class="tw" href="#st5" x="1050" y="130" transform="rotate(-18 1050 130)"/>
+      <use class="tw" href="#st4" x="920" y="240"/>
+      <use class="tw" href="#st5" x="200" y="360" transform="rotate(30 200 360) scale(.7)"/>
+      <use class="tw" href="#st4" x="1110" y="380" transform="scale(.7)"/>
+      <use class="tw" href="#st5" x="80"  y="560" transform="rotate(-10 80 560) scale(.85)"/>
+      <use class="tw" href="#st4" x="1160" y="560" transform="scale(.6)"/>
+      <use class="tw" href="#st4" x="620" y="70"  transform="scale(.6)"/>
+      <circle class="tw" cx="420" cy="200" r="2.4"/>
+      <circle class="tw" cx="760" cy="150" r="2"/>
+      <circle class="tw" cx="980" cy="470" r="2.4"/>
+      <circle class="tw" cx="160" cy="460" r="2"/>
+      <circle class="tw" cx="1060" cy="640" r="2"/>
+    </g>
+
+    <g class="moon-g">
+      <path d="M 1005 175 a 34 34 0 1 0 22 60 a 27 27 0 1 1 -22 -60 z"
+            fill="#c9a86a" opacity=".95" transform="rotate(24 1000 205)"/>
+    </g>
+
+    <g fill="none" stroke="#f2ead6" stroke-width="1.6" opacity=".9">
+      <circle cx="600" cy="848" r="300"/>
+      <circle cx="600" cy="848" r="252"/>
+      <circle cx="600" cy="848" r="276" stroke-width="1" stroke-dasharray="1 7" opacity=".4"/>
+      <circle cx="600" cy="848" r="200" stroke-width="1" opacity=".6"/>
+      <g id="spokes"></g>
+      <g id="rays" stroke-width="1"></g>
+    </g>
+    <!-- 環にそって並ぶ天体のメダイヨン（すべて手描きのSVG） -->
+    <g id="medallions" stroke-linecap="round">
+
+      <!-- こぐま座ふうの星のつらなり（左端） -->
+      <g transform="translate(333.4 776.6)">
+        <polyline points="-9,-5 -1,-10 8,-5 5,5 -4,8" fill="none" stroke="#f2ead6" stroke-width="0.9" opacity=".7"/>
+        <circle cx="-9" cy="-5" r="1.6" fill="#f2ead6"/>
+        <circle cx="-1" cy="-10" r="2.2" fill="#f2ead6"/>
+        <circle cx="8" cy="-5" r="1.6" fill="#f2ead6"/>
+        <circle cx="5" cy="5" r="1.4" fill="#f2ead6"/>
+        <circle cx="-4" cy="8" r="1.8" fill="#f2ead6"/>
+        <path d="M14 -13 l1.1 4.2 4.2 1.1 -4.2 1.1 -1.1 4.2 -1.1 -4.2 -4.2 -1.1 4.2 -1.1 z" fill="#c9a86a"/>
+      </g>
+
+      <!-- 眠る三日月 -->
+      <g transform="translate(404.8 652.8)">
+        <circle r="19" fill="none" stroke="#f2ead6" stroke-width="0.8" stroke-dasharray="1 5" opacity=".55"/>
+        <path d="M3 -13 a13 13 0 1 0 6.5 24 a10.5 10.5 0 1 1 -6.5 -24 z" fill="#f2ead6"/>
+        <path d="M6.5 -3 q2.4 2.2 4.8 -0.3 M8 5.5 q2 1.8 4 0.4" stroke="#455e59" stroke-width="1.3" fill="none"/>
+        <circle cx="-11" cy="-9" r="1.2" fill="#f2ead6" opacity=".8"/>
+        <circle cx="-13" cy="6" r="1" fill="#f2ead6" opacity=".6"/>
+      </g>
+
+      <!-- 環をまとう星（土星） -->
+      <g transform="translate(528.6 581.4)">
+        <g transform="rotate(-18)">
+          <path d="M-16 0 a16 5.4 0 0 1 32 0" fill="none" stroke="#f2ead6" stroke-width="1.2" opacity=".9"/>
+          <circle r="8.5" fill="none" stroke="#f2ead6" stroke-width="1.4"/>
+          <path d="M-7.5 -3 q7.5 2.6 15 0 M-8 2.6 q8 2.6 16 0" stroke="#f2ead6" stroke-width="0.8" fill="none" opacity=".65"/>
+          <path d="M-16 0 a16 5.4 0 0 0 32 0" fill="none" stroke="#f2ead6" stroke-width="1.2"/>
+        </g>
+        <circle cx="15" cy="-10" r="1.3" fill="#c9a86a"/>
+      </g>
+
+      <!-- ほほえむ太陽（頂点） -->
+      <g transform="translate(600 566)">
+        <circle r="26" fill="none" stroke="#f2ead6" stroke-width="0.8" stroke-dasharray="1 5" opacity=".5"/>
+        <g stroke="#c9a86a" stroke-width="1.4">
+          <line x1="0" y1="-14.5" x2="0" y2="-21"/>
+          <line x1="0" y1="14.5" x2="0" y2="21"/>
+          <line x1="-14.5" y1="0" x2="-21" y2="0"/>
+          <line x1="14.5" y1="0" x2="21" y2="0"/>
+          <line x1="-10.3" y1="-10.3" x2="-14.5" y2="-14.5"/>
+          <line x1="10.3" y1="-10.3" x2="14.5" y2="-14.5"/>
+          <line x1="-10.3" y1="10.3" x2="-14.5" y2="14.5"/>
+          <line x1="10.3" y1="10.3" x2="14.5" y2="14.5"/>
+        </g>
+        <circle r="11.5" fill="#c9a86a"/>
+        <path d="M-6 -2 q2.4 2.4 4.8 0 M1.2 -2 q2.4 2.4 4.8 0 M-4 4 q4 3.6 8 0" stroke="#455e59" stroke-width="1.4" fill="none"/>
+      </g>
+
+      <!-- クレーターのある満月 -->
+      <g transform="translate(671.4 581.4)">
+        <circle r="19" fill="none" stroke="#f2ead6" stroke-width="0.8" stroke-dasharray="1 5" opacity=".55"/>
+        <circle r="11.5" fill="#f2ead6"/>
+        <circle cx="-4" cy="-3.5" r="2.6" fill="#ded3ae"/>
+        <circle cx="4.5" cy="1.5" r="1.8" fill="#ded3ae"/>
+        <circle cx="-1" cy="6" r="1.4" fill="#ded3ae"/>
+        <circle cx="3.5" cy="-6" r="1.1" fill="#ded3ae"/>
+      </g>
+
+      <!-- ながれ星 -->
+      <g transform="translate(795.2 652.8)">
+        <path d="M-2 -2 q-12 2 -22 12 M0 3 q-10 5 -17 14 M3 5 q-6 7 -8 15" fill="none" stroke="#f2ead6" stroke-width="1" opacity=".75"/>
+        <path d="M4 -8 l1.7 6.3 6.3 1.7 -6.3 1.7 -1.7 6.3 -1.7 -6.3 -6.3 -1.7 6.3 -1.7 z" fill="#c9a86a"/>
+        <circle cx="-14" cy="-6" r="1.1" fill="#f2ead6" opacity=".7"/>
+      </g>
+
+      <!-- カシオペヤ座ふうの星のつらなり（右端） -->
+      <g transform="translate(866.6 776.6)">
+        <polyline points="-11,4 -5,-5 0,2 6,-7 11,0" fill="none" stroke="#f2ead6" stroke-width="0.9" opacity=".7"/>
+        <circle cx="-11" cy="4" r="1.6" fill="#f2ead6"/>
+        <circle cx="-5" cy="-5" r="1.9" fill="#f2ead6"/>
+        <circle cx="0" cy="2" r="1.4" fill="#f2ead6"/>
+        <circle cx="6" cy="-7" r="2.2" fill="#f2ead6"/>
+        <circle cx="11" cy="0" r="1.6" fill="#f2ead6"/>
+        <path d="M-15 -11 l1.1 4.2 4.2 1.1 -4.2 1.1 -1.1 4.2 -1.1 -4.2 -4.2 -1.1 4.2 -1.1 z" fill="#c9a86a"/>
+      </g>
+
+      <!-- メダイヨンの合間の小さなきらめき -->
+      <g fill="#f2ead6" opacity=".6">
+        <path d="M361 710 q1 3.2 4 4 q-3 .8 -4 4 q-1 -3.2 -4 -4 q3 -.8 4 -4 z"/>
+        <path d="M462 609 q1 3.2 4 4 q-3 .8 -4 4 q-1 -3.2 -4 -4 q3 -.8 4 -4 z"/>
+        <path d="M738 609 q1 3.2 4 4 q-3 .8 -4 4 q-1 -3.2 -4 -4 q3 -.8 4 -4 z"/>
+        <path d="M839 710 q1 3.2 4 4 q-3 .8 -4 4 q-1 -3.2 -4 -4 q3 -.8 4 -4 z"/>
+      </g>
+    </g>
+  </svg>
+
+  <div class="hero-inner">
+    <p class="obi rise d1">40代からの星よみ</p>
+    <h1 class="rise d2">
+      <span class="small">Hoshiyomi Omasu</span>
+      星よみ専門家おます
+    </h1>
+    <p class="thesis rise d3">
+      星よみを、現実に落とし込む。<br>
+      日常のなかで小さく積み上げていく<br>
+      ヒントをお届けします。
+    </p>
+  </div>
+</header>
+
+<!-- ============ 満ちていく月 ============ -->
+<div class="michiru reveal">
+  <svg width="230" height="46" viewBox="0 0 230 46" aria-hidden="true">
+    <g stroke="#3d524c" stroke-width="1.5">
+      <circle cx="25" cy="23" r="14" fill="none" opacity=".7"/>
+      <circle cx="80" cy="23" r="14" fill="none" opacity=".8"/>
+      <path d="M 80 9 a 14 14 0 0 1 0 28 a 18 18 0 0 0 0 -28 z" fill="#c9a86a" stroke="none"/>
+      <circle cx="135" cy="23" r="14" fill="none" opacity=".9"/>
+      <path d="M 135 9 a 14 14 0 0 1 0 28 z" fill="#c9a86a" stroke="none"/>
+      <circle cx="195" cy="23" r="16" fill="#c9a86a"/>
+      <path d="M188 21 q3 3 6 0 M198 21 q3 3 6 0 M191 28 q4 3.5 8 0"
+            stroke="#3d524c" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+    </g>
+  </svg>
+  <p class="cap">チリつもで、人生を変える</p>
+</div>
+
+<!-- ============ きょうの星もよう（自動計算） ============ -->
+<div class="seiza-band reveal" id="hoshimoyo">
+  <p class="obi">きょうの星もよう</p>
+  <h2 id="hm-date">&nbsp;</h2>
+
+  <div class="hm-grid">
+
+    <div class="hm-card">
+      <div class="hm-art">
+        <svg id="hm-moon" viewBox="0 0 64 64" aria-hidden="true"></svg>
+      </div>
+      <p class="hm-label">月齢 <b id="hm-age">–</b></p>
+      <p class="hm-sub" id="hm-phasename">–</p>
+    </div>
+
+    <div class="hm-card">
+      <div class="hm-art" id="hm-moonsign-art"></div>
+      <p class="hm-label">月は <b id="hm-moonsign">–</b> を運行中</p>
+      <p class="hm-sub">きょうの、こころの居場所</p>
+    </div>
+
+    <div class="hm-card">
+      <div class="hm-art" id="hm-sunsign-art"></div>
+      <p class="hm-label">太陽は <b id="hm-sunsign">–</b></p>
+      <p class="hm-sub">いまの季節のテーマ</p>
+    </div>
+
+  </div>
+
+  <p class="hm-next"><span id="hm-newmoon">&nbsp;</span>　／　<span id="hm-fullmoon">&nbsp;</span></p>
+  <button class="hm-btn" id="hm-btn" type="button">▸ あすの星もようをのぞく</button>
+  <p class="seiza-cap">この星もようの読みときは、<a href="https://lin.ee/zI0K08R" target="_blank" rel="noopener">LINE</a> と <a href="https://voicy.jp/channel/960377" target="_blank" rel="noopener">Voicy</a> でお届けしています</p>
+
+  <div id="seiza-lib" hidden>
+    <svg data-sign="0" viewBox="0 0 64 64" fill="none" stroke="#f2ead6" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M31 21 C26 10 11 12 13 23 C14 31 24 33 27 27"/>
+        <path d="M33 21 C38 10 53 12 51 23 C50 31 40 33 37 27"/>
+        <path d="M27 27 C25 38 29 45 32 45 C35 45 39 38 37 27"/>
+        <path d="M26 33 q2 2 4 0 M34 33 q2 2 4 0"/>
+        <path d="M50 8 l1 3.5 3.5 1 -3.5 1 -1 3.5 -1 -3.5 -3.5 -1 3.5 -1 z" fill="#c9a86a" stroke="none"/>
+      </svg>
+    <svg data-sign="1" viewBox="0 0 64 64" fill="none" stroke="#f2ead6" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="32" cy="36" r="11"/>
+        <path d="M23 28 C15 20 18 9 27 12"/>
+        <path d="M41 28 C49 20 46 9 37 12"/>
+        <circle cx="28" cy="34" r="1.3" fill="#f2ead6" stroke="none"/>
+        <circle cx="36" cy="34" r="1.3" fill="#f2ead6" stroke="none"/>
+        <circle cx="30" cy="41" r="0.9" fill="#f2ead6" stroke="none"/>
+        <circle cx="34" cy="41" r="0.9" fill="#f2ead6" stroke="none"/>
+        <path d="M51 34 l1 3.5 3.5 1 -3.5 1 -1 3.5 -1 -3.5 -3.5 -1 3.5 -1 z" fill="#c9a86a" stroke="none"/>
+      </svg>
+    <svg data-sign="2" viewBox="0 0 64 64" fill="none" stroke="#f2ead6" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M24 18 V46 M40 18 V46"/>
+        <path d="M18 16 C26 12 38 12 46 16"/>
+        <path d="M18 48 C26 52 38 52 46 48"/>
+        <path d="M14 23 q1 4 5 5 q-4 1 -5 5 q-1 -4 -5 -5 q4 -1 5 -5 z" fill="#c9a86a" stroke="none"/>
+        <path d="M50 31 q1 4 5 5 q-4 1 -5 5 q-1 -4 -5 -5 q4 -1 5 -5 z" fill="#c9a86a" stroke="none"/>
+      </svg>
+    <svg data-sign="3" viewBox="0 0 64 64" fill="none" stroke="#f2ead6" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <ellipse cx="32" cy="37" rx="11" ry="7.5"/>
+        <path d="M22 32 C14 28 12 19 19 17 C24 16 25 22 21 23"/>
+        <path d="M42 32 C50 28 52 19 45 17 C40 16 39 22 43 23"/>
+        <path d="M28 30 l-2 -5 M36 30 l2 -5"/>
+        <circle cx="26" cy="24" r="1.2" fill="#f2ead6" stroke="none"/>
+        <circle cx="38" cy="24" r="1.2" fill="#f2ead6" stroke="none"/>
+        <path d="M29 38 q3 2.5 6 0"/>
+        <path d="M22 42 l-6 4 M24 44.5 l-5 5 M42 42 l6 4 M40 44.5 l5 5"/>
+        <path d="M54 46 l1 3.5 3.5 1 -3.5 1 -1 3.5 -1 -3.5 -3.5 -1 3.5 -1 z" fill="#c9a86a" stroke="none"/>
+      </svg>
+    <svg data-sign="4" viewBox="0 0 64 64" fill="none" stroke="#f2ead6" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="32" cy="36" r="9.5"/>
+        <path d="M29.5 24.3 L32 18 L34.5 24.3"/>
+        <path d="M38.5 26 L44.7 23.3 L42.1 29.5"/>
+        <path d="M43.7 33.5 L50 36 L43.7 38.5"/>
+        <path d="M42.1 42.5 L44.7 48.7 L38.5 46"/>
+        <path d="M34.5 47.7 L32 54 L29.5 47.7"/>
+        <path d="M25.5 46 L19.3 48.7 L21.9 42.5"/>
+        <path d="M20.3 38.5 L14 36 L20.3 33.5"/>
+        <path d="M21.9 29.5 L19.3 23.3 L25.5 26"/>
+        <path d="M26.5 34 q2 2 4 0 M33.5 34 q2 2 4 0"/>
+        <path d="M30 40 q2 2 4 0"/>
+        <path d="M52 12 l1 3.5 3.5 1 -3.5 1 -1 3.5 -1 -3.5 -3.5 -1 3.5 -1 z" fill="#c9a86a" stroke="none"/>
+      </svg>
+    <svg data-sign="5" viewBox="0 0 64 64" fill="none" stroke="#f2ead6" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M33 12 C31 26 31 40 32 52"/>
+        <ellipse cx="28" cy="18" rx="2.6" ry="5.2" transform="rotate(-32 28 18)"/>
+        <ellipse cx="37" cy="17" rx="2.6" ry="5.2" transform="rotate(32 37 17)"/>
+        <ellipse cx="27" cy="26" rx="2.6" ry="5.2" transform="rotate(-32 27 26)"/>
+        <ellipse cx="37" cy="25" rx="2.6" ry="5.2" transform="rotate(32 37 25)"/>
+        <ellipse cx="28" cy="34" rx="2.6" ry="5.2" transform="rotate(-32 28 34)"/>
+        <ellipse cx="36" cy="33" rx="2.6" ry="5.2" transform="rotate(32 36 33)"/>
+        <path d="M32 44 C24 43 20 37 23 32"/>
+        <path d="M32 49 C40 48 44 42 41 38"/>
+        <path d="M47 10 l1 3.5 3.5 1 -3.5 1 -1 3.5 -1 -3.5 -3.5 -1 3.5 -1 z" fill="#c9a86a" stroke="none"/>
+      </svg>
+    <svg data-sign="6" viewBox="0 0 64 64" fill="none" stroke="#f2ead6" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="32" cy="11" r="2"/>
+        <path d="M32 13 V49 M26 52 H38"/>
+        <path d="M17 25 H47"/>
+        <path d="M17 25 L11 36 M17 25 L23 36"/>
+        <path d="M9 36 Q17 44 25 36"/>
+        <path d="M47 25 L41 36 M47 25 L53 36"/>
+        <path d="M39 36 Q47 44 55 36"/>
+        <path d="M53 14 l1 3.5 3.5 1 -3.5 1 -1 3.5 -1 -3.5 -3.5 -1 3.5 -1 z" fill="#c9a86a" stroke="none"/>
+      </svg>
+    <svg data-sign="7" viewBox="0 0 64 64" fill="none" stroke="#f2ead6" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M12 38 C16 43 26 45 33 41"/>
+        <path d="M33 41 C40 38 44 31 42 24 C41 19 45 16 48 19"/>
+        <path d="M48 19 l4.5 -2 M48 19 l1.5 4.5"/>
+        <path d="M13 36 C7 34 5 28 9 26 C13 25 13 30 10 30"/>
+        <path d="M12 40 C7 42 4 40 5 37"/>
+        <path d="M20 43 l-2 5 M26 44 l-1 5 M31 43 l1 5"/>
+        <circle cx="14" cy="36" r="1.1" fill="#f2ead6" stroke="none"/>
+        <path d="M53 40 l1 3.5 3.5 1 -3.5 1 -1 3.5 -1 -3.5 -3.5 -1 3.5 -1 z" fill="#c9a86a" stroke="none"/>
+      </svg>
+    <svg data-sign="8" viewBox="0 0 64 64" fill="none" stroke="#f2ead6" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M16 46 Q12 18 40 13"/>
+        <path d="M16 46 L40 13"/>
+        <path d="M11 51 L46 15"/>
+        <path d="M46 15 l-8 1.5 M46 15 l-1.5 8"/>
+        <path d="M11 51 l2.5 -7 M11 51 l7 -2.5"/>
+        <path d="M52 44 l1 3.5 3.5 1 -3.5 1 -1 3.5 -1 -3.5 -3.5 -1 3.5 -1 z" fill="#c9a86a" stroke="none"/>
+      </svg>
+    <svg data-sign="9" viewBox="0 0 64 64" fill="none" stroke="#f2ead6" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M25 45 C22 35 26 26 33 24"/>
+        <path d="M33 24 C38 13 52 11 53 19 C54 26 45 28 41 25"/>
+        <path d="M34 26 l6 -1"/>
+        <path d="M25 45 C29 49 36 49 40 46"/>
+        <path d="M25 45 l-2 6"/>
+        <path d="M30 32 q2 2 4 0"/>
+        <circle cx="26" cy="41" r="0.9" fill="#f2ead6" stroke="none"/>
+        <path d="M12 14 l1 3.5 3.5 1 -3.5 1 -1 3.5 -1 -3.5 -3.5 -1 3.5 -1 z" fill="#c9a86a" stroke="none"/>
+      </svg>
+    <svg data-sign="10" viewBox="0 0 64 64" fill="none" stroke="#f2ead6" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M38 12 l10 3 -3 9 -10 -3 z"/>
+        <path d="M48 15 q6 3 1 8"/>
+        <circle cx="34" cy="26" r="1" fill="#f2ead6" stroke="none"/>
+        <circle cx="31" cy="31" r="1.2" fill="#f2ead6" stroke="none"/>
+        <circle cx="28" cy="36" r="1" fill="#f2ead6" stroke="none"/>
+        <path d="M12 43 q4 -5 8 0 t8 0 t8 0 t8 0"/>
+        <path d="M12 51 q4 -5 8 0 t8 0 t8 0 t8 0"/>
+        <path d="M13 15 l1 3.5 3.5 1 -3.5 1 -1 3.5 -1 -3.5 -3.5 -1 3.5 -1 z" fill="#c9a86a" stroke="none"/>
+      </svg>
+    <svg data-sign="11" viewBox="0 0 64 64" fill="none" stroke="#f2ead6" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M20 25 C25 18 37 18 42 25 C37 30 25 30 20 25 z"/>
+        <path d="M20 25 L13 21 L13 30 z"/>
+        <circle cx="37" cy="24" r="1" fill="#f2ead6" stroke="none"/>
+        <path d="M44 39 C39 46 27 46 22 39 C27 34 39 34 44 39 z"/>
+        <path d="M44 39 L51 43 L51 34 z"/>
+        <circle cx="27" cy="40" r="1" fill="#f2ead6" stroke="none"/>
+        <circle cx="48" cy="26" r="1.2" fill="#f2ead6" stroke="none"/>
+        <circle cx="16" cy="46" r="1" fill="#f2ead6" stroke="none"/>
+        <path d="M52 10 l1 3.5 3.5 1 -3.5 1 -1 3.5 -1 -3.5 -3.5 -1 3.5 -1 z" fill="#c9a86a" stroke="none"/>
+      </svg>
+  </div>
+</div>
+
+<!-- ============ 新着お知らせ ============ -->
+<section id="news" class="reveal" style="padding-top:3.4rem">
+  <div class="sec-head">
+    <p class="obi">新着お知らせ</p>
+    <p class="hoshikugiri">&#10022; &#10023; &#10022;</p>
+  </div>
+
+  <!--
+    ◆ お知らせの追加のしかた ◆
+    下の <a class="news-item"> のかたまりをコピーして、いちばん上に貼り付け、
+    日付・本文・リンク先(href)を書き替えてください。
+    リンクが不要なお知らせは <div class="news-item"> ～ </div> に変えればOKです。
+    表示は上から新しい順。古いものは削除して3〜5件程度を保つのがおすすめです。
+  -->
+  <div class="news-list">
+
+    <!-- ※以下はサンプルです。実際のお知らせに差し替えてください -->
+    <a class="news-item" href="https://note.com/omasu_horoscope" target="_blank" rel="noopener">
+      <span class="news-date">7月14日</span>
+      <span class="news-text">蟹座新月にあわせて、新しい教材を公開予定です</span>
+    </a>
+
+    <div class="news-item">
+      <span class="news-date">7月7日</span>
+      <span class="news-text">公式サイトをオープンしました</span>
+    </div>
+
+  </div>
+
+  <div class="news-btns">
+    <a class="btn-hand" href="https://lin.ee/zI0K08R" target="_blank" rel="noopener">お知らせをLINEで受けとる</a>
+    <a class="btn-hand" href="https://note.com/omasu_horoscope" target="_blank" rel="noopener">noteの記事一覧</a>
+  </div>
+</section>
+
+<!-- ============ KANTEI（メール鑑定） ============ -->
+<section id="kantei" class="reveal">
+  <div class="sec-head">
+    <p class="obi">いちばん人気の鑑定</p>
+    <h2>星から「いまのわたし」を読み解く、一通のお手紙</h2>
+    <p class="hoshikugiri">&#10022; &#10023; &#10022;</p>
+  </div>
+
+  <div class="tarot-card">
+    <span class="kado tl">&#10022;</span><span class="kado tr">&#10022;</span>
+    <span class="kado bl">&#10022;</span><span class="kado br">&#10022;</span>
+    <div style="text-align:center"><span class="kantei-chip">【メール鑑定】</span></div>
+    <p class="kantei-lead">生年月日と出生時間からホロスコープを描き、おひとりずつ<em>すべて書き下ろし</em>でお届けする鑑定書です。占いがはじめての方にも読みやすい、やさしい言葉で綴ります。中身は、大きく三本立てです。</p>
+
+    <div class="naiyou">
+      <div class="naiyou-item">
+        <span class="naiyou-num">一</span>
+        <h3>基本的な性質</h3>
+        <p>出生図から、持って生まれた気質・強み・心のくせをていねいに言葉にします。「なんとなく感じていた自分」に、輪郭がつきます。</p>
+      </div>
+      <div class="naiyou-item">
+        <span class="naiyou-num">二</span>
+        <h3>重要な時期・内面の変化</h3>
+        <p>これからめぐる星の流れを読み、変化の時期とその過ごし方をお伝えします。先の見通しがあるだけで、毎日は少し安心になります。</p>
+      </div>
+      <div class="naiyou-item">
+        <span class="naiyou-num">三</span>
+        <h3>特定のお悩みへのお返事</h3>
+        <p>いま抱えているお悩みに、星の視点から具体的にお答えします。仕事のこと、家族のこと、これからのこと——なんでもどうぞ。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 鑑定書のイメージ -->
+  <div class="preview-wrap" aria-hidden="true">
+    <svg viewBox="0 0 400 265" xmlns="http://www.w3.org/2000/svg">
+      <!-- うしろのページ -->
+      <g transform="rotate(-3 160 130)">
+        <rect x="45" y="22" width="252" height="216" rx="6" fill="#fbfaf3" stroke="#c9d3cc" stroke-width="1.2"/>
+      </g>
+      <g transform="rotate(1.5 230 130)">
+        <rect x="90" y="18" width="252" height="220" rx="6" fill="#fdfcf6" stroke="#c9d3cc" stroke-width="1.2"/>
+      </g>
+      <!-- まえのページ -->
+      <rect x="72" y="30" width="256" height="222" rx="6" fill="#fffdf7" stroke="#6e8784" stroke-width="1.5"/>
+      <rect x="79" y="37" width="242" height="208" rx="3" fill="none" stroke="#6e8784" stroke-width="1" opacity=".4"/>
+      <text x="200" y="64" text-anchor="middle" font-family="'Klee One',cursive" font-size="15" fill="#3d524c" letter-spacing="4">&#10022; 鑑定書 &#10023;</text>
+      <!-- 一、 -->
+      <text x="96" y="94" font-family="'Klee One',cursive" font-size="11.5" fill="#54706b" letter-spacing="2">一、基本的な性質</text>
+      <rect x="96" y="102" width="204" height="5" rx="2.5" fill="#e2e7e0"/>
+      <rect x="96" y="113" width="176" height="5" rx="2.5" fill="#e2e7e0"/>
+      <rect x="96" y="124" width="192" height="5" rx="2.5" fill="#e9e4d6"/>
+      <!-- 二、 -->
+      <text x="96" y="150" font-family="'Klee One',cursive" font-size="11.5" fill="#54706b" letter-spacing="2">二、重要な時期・内面の変化</text>
+      <rect x="96" y="158" width="196" height="5" rx="2.5" fill="#e2e7e0"/>
+      <rect x="96" y="169" width="208" height="5" rx="2.5" fill="#e9e4d6"/>
+      <rect x="96" y="180" width="150" height="5" rx="2.5" fill="#e2e7e0"/>
+      <!-- 三、 -->
+      <text x="96" y="206" font-family="'Klee One',cursive" font-size="11.5" fill="#54706b" letter-spacing="2">三、お悩みへのお返事</text>
+      <rect x="96" y="214" width="188" height="5" rx="2.5" fill="#e2e7e0"/>
+      <rect x="96" y="225" width="120" height="5" rx="2.5" fill="#e2e7e0"/>
+      <!-- 金の星 -->
+      <path d="M312 88 l2.2 4.6 4.6.6-3.4 3.3.8 4.6-4.2-2.2-4.2 2.2.8-4.6-3.4-3.3 4.6-.6z" fill="#c9a86a"/>
+      <path d="M64 200 l1.8 3.8 3.8.5-2.8 2.7.7 3.8-3.5-1.8-3.5 1.8.7-3.8-2.8-2.7 3.8-.5z" fill="#c9a86a" opacity=".8"/>
+    </svg>
+    <p class="preview-cap">お届けする鑑定書のイメージです。PDFでたっぷりのボリューム（「21ページも！」というお声もいただきました）。すべて書き下ろしのため、実物の中身は受けとった方だけのお楽しみに。</p>
+  </div>
+
+  <!-- 流れ -->
+  <div class="flow-head">
+    <p class="obi">お申し込みからお届けまで</p>
+  </div>
+  <div class="flow">
+
+    <div class="flow-step">
+      <span class="step-num">1</span>
+      <div class="f-icon">
+        <svg width="52" height="52" viewBox="0 0 52 52" aria-hidden="true">
+          <rect x="9" y="14" width="34" height="26" rx="4" fill="none" stroke="#6e8784" stroke-width="1.6"/>
+          <path d="M9 22 h34" stroke="#6e8784" stroke-width="1.6"/>
+          <path d="M26 28 l1.7 3.5 3.6.5-2.6 2.5.6 3.6-3.3-1.7-3.3 1.7.6-3.6-2.6-2.5 3.6-.5z" fill="#c9a86a"/>
+        </svg>
+      </div>
+      <h3>SHOPで申し込む</h3>
+      <p>おます星よみSHOPから、メール鑑定を選んでお申し込みください。</p>
+    </div>
+
+    <div class="flow-step">
+      <span class="step-num">2</span>
+      <div class="f-icon">
+        <svg width="52" height="52" viewBox="0 0 52 52" aria-hidden="true">
+          <rect x="11" y="10" width="26" height="32" rx="3" fill="none" stroke="#6e8784" stroke-width="1.6"/>
+          <path d="M16 18 h16 M16 24 h16 M16 30 h10" stroke="#c9d3cc" stroke-width="2" stroke-linecap="round"/>
+          <path d="M40 26 l-9 9 -3.6 1 1-3.6 9-9 z" fill="#c9a86a"/>
+        </svg>
+      </div>
+      <h3>お誕生日とお悩みを送る</h3>
+      <p>生年月日・出生時間・出生地と、聞いてみたいお悩みをお知らせください。</p>
+    </div>
+
+    <div class="flow-step">
+      <span class="step-num">3</span>
+      <div class="f-icon">
+        <svg width="52" height="52" viewBox="0 0 52 52" aria-hidden="true">
+          <circle cx="26" cy="27" r="15" fill="none" stroke="#6e8784" stroke-width="1.6"/>
+          <path d="M26 14 v26 M13.5 20.5 l25 13 M13.5 33.5 l25 -13" stroke="#6e8784" stroke-width="1" opacity=".5"/>
+          <path d="M32 17 a11 11 0 1 0 3 14 a9 9 0 0 1 -3 -14z" fill="#c9a86a"/>
+        </svg>
+      </div>
+      <h3>おますが星を読み解く</h3>
+      <p>ホロスコープを一枚ずつ丁寧に計算し、おひとりのために書き下ろします。</p>
+    </div>
+
+    <div class="flow-step">
+      <span class="step-num">4</span>
+      <div class="f-icon">
+        <svg width="52" height="52" viewBox="0 0 52 52" aria-hidden="true">
+          <path d="M10 20 l16 -9 16 9 v18 a3 3 0 0 1 -3 3 h-26 a3 3 0 0 1 -3 -3 z" fill="none" stroke="#6e8784" stroke-width="1.6" stroke-linejoin="round"/>
+          <path d="M10 20 l16 11 16 -11" fill="none" stroke="#6e8784" stroke-width="1.6" stroke-linejoin="round"/>
+          <path d="M39 12 l1.6 3.3 3.4.5-2.5 2.4.6 3.4-3.1-1.6-3.1 1.6.6-3.4-2.5-2.4 3.4-.5z" fill="#c9a86a"/>
+        </svg>
+      </div>
+      <h3>メールで鑑定書が届く</h3>
+      <p>PDFの鑑定書をメールでお届け。何度でも、読み返せます。</p>
+    </div>
+
+  </div>
+
+  <div class="kantei-cta">
+    <a class="cta-big" href="https://omasuhoroscope.stores.jp/items/65f25bdbd397ae00328f8b2d" target="_blank" rel="noopener">メール鑑定を申し込む</a>
+    <a class="cta-sub" href="#voices">&#10022; レビュー15件・総合評価5.0 —— お客さまの声はこちら</a>
+  </div>
+</section>
+
+<!-- ============ VOICES（お客さまの声） ============ -->
+<section id="voices" class="reveal">
+  <div class="sec-head">
+    <p class="obi">お客さまの声</p>
+    <h2>鑑定を受けた方から、届いています</h2>
+    <p class="hoshikugiri">&#10022; &#10023; &#10022;</p>
+  </div>
+
+  <div class="rating-strip">
+    <span class="big-stars">★★★★★</span>
+    <span class="num-label">総合評価 5.0 ／ レビュー15件（おます星よみSHOP）</span>
+  </div>
+
+  <div class="voices">
+
+    <div class="voice">
+      <p class="stars">★★★★★</p>
+      <p>かなりなボリュームの鑑定書で驚きました！お会いしたことも話したこともないのに…？？と不思議なくらい合ってました！！！客観的に自分を知りたい、感覚ではわかっているけれど言語化したい人にぴったりだと思います♪</p>
+      <div class="who"><span class="name">haruさん</span><span class="item-tag">メール鑑定</span></div>
+    </div>
+
+    <div class="voice">
+      <p class="stars">★★★★★</p>
+      <p>メール鑑定なのに、実際にお会いして色々お話をした上で占っていただけたような感覚になるくらい、しっくり来る結果でした！どう言い表したらいいかわからない感情やモヤモヤを上手く言葉にしていただけて、心のつっかえがとれたようなスッキリした気持ちになれました！</p>
+      <div class="who"><span class="name">こここさん</span><span class="item-tag">メール鑑定</span></div>
+    </div>
+
+    <div class="voice">
+      <p class="stars">★★★★★</p>
+      <p>21ページも！と開いた瞬間驚きました！内容もとっても濃く、自分とゆっくり向き合う時間にさせてくれた鑑定書で大満足です。どんな自分でもいいのかな、もう少し自分を愛してみようかな、って心が緩む鑑定書でした。（一部抜粋）</p>
+      <div class="who"><span class="name">うととんさん</span><span class="item-tag">メール鑑定</span></div>
+    </div>
+
+    <div class="voice">
+      <p class="stars">★★★★★</p>
+      <p>どことなく違和感を感じていた素の自分の性格をドンピシャに鑑定していただき、それも私自身なんだ、このままでもいいんだと、とても前向きに物事を考えられるようになりました。星読みの奥深さに神秘さえ感じます。</p>
+      <div class="who"><span class="name">みしぇるさん</span><span class="item-tag">あなただけの鑑定書</span></div>
+    </div>
+
+    <div class="voice">
+      <p class="stars">★★★★★</p>
+      <p>考えすぎて自分の事が分からなくなった人へ。この鑑定書をとおして心が軽くなる事があると思います。全てに優しさを感じられて安心感と元気がでます。何度も読み返したいです⭐︎</p>
+      <div class="who"><span class="name">ももさん</span><span class="item-tag">メール鑑定</span></div>
+    </div>
+
+    <div class="voice">
+      <p class="stars">★★★★★</p>
+      <p>今までなんとなーくふわふわとしか捉えられていなかった部分を、客観的かつ具体的に言葉で表してもらえた事で、とても腑に落ちてスッキリ。今後目指していく予定のものがワードの中に並んでいて、自信にも繋がりました。</p>
+      <div class="who"><span class="name">ささん</span><span class="item-tag">あなただけの鑑定書</span></div>
+    </div>
+
+    <div class="voice">
+      <p class="stars">★★★★★</p>
+      <p>すごいボリュームでプリントアウトして、迷ったときに何度も見返そうと思います。とても前向きな内容と具体的なアドバイスもいただき、お願いして良かったです。</p>
+      <div class="who"><span class="name">kyokoさん</span><span class="item-tag">メール鑑定</span></div>
+    </div>
+
+    <div class="voice">
+      <p class="stars">★★★★★</p>
+      <p>優しく思いやりに溢れた鑑定をありがとうございました。自分では認識してない部分の可能性があるという事を知れて勇気をもらえました。太陽と対照的な、自分の中の二面性みたいなものに納得がいきました。</p>
+      <div class="who"><span class="name">ariga10さん</span><span class="item-tag">あなただけの鑑定書</span></div>
+    </div>
+
+    <div class="voice">
+      <p class="stars">★★★★★</p>
+      <p>星との関係を知ることで、モヤモヤしていた部分が少し楽になりました。これからの自分の行動でいろいろと変わると思うので、何度も読み直して、参考にさせていただきます。</p>
+      <div class="who"><span class="name">ぽぽさん</span><span class="item-tag">メール鑑定</span></div>
+    </div>
+
+  </div>
+
+  <div class="voices-more">
+    <a href="https://omasuhoroscope.stores.jp/" target="_blank" rel="noopener">レビューをすべて見る（おます星よみSHOP）</a>
+  </div>
+</section>
+
+<!-- ============ BOOKS（実践note） ============ -->
+<section id="books" class="reveal">
+  <div class="sec-head">
+    <p class="obi">星よみを仕事にしたい方へ</p>
+    <h2>おますの実践note</h2>
+    <p class="hoshikugiri">&#10022; &#10023; &#10022;</p>
+  </div>
+  <p class="books-lead">鑑定だけでなく、「星よみを仕事にする過程」もぜんぶ公開しています。これから在宅で占いを始めたい方、発信が続かなくて悩んでいる方へ。</p>
+  <div class="books">
+
+    <a class="book" href="https://note.com/omasu_horoscope/n/n13d7d6d01b76" target="_blank" rel="noopener">
+      <span class="book-tag">有料note・第1弾</span>
+      <h3>実績ゼロの私が在宅占い師で「月5万円」を達成するまでにやったこと</h3>
+      <p>フォロワーも実績もゼロだった主婦が、在宅の占いで月5万円に届くまで。やったことを、順番にぜんぶ書きました。</p>
+      <span class="book-go">noteで読む →</span>
+    </a>
+
+    <a class="book" href="https://note.com/omasu_horoscope/n/nb983b8d05446" target="_blank" rel="noopener">
+      <span class="book-tag">有料note・実践編</span>
+      <h3>在宅占い師のためのAI発信の教科書</h3>
+      <p>インスタ投稿・告知・導線づくりをChatGPTで整える。「発信が続かない」を、根性ではなく仕組みで解決する実践編です。</p>
+      <span class="book-go">noteで読む →</span>
+    </a>
+
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section id="services" class="reveal">
+  <div class="sec-head">
+    <p class="obi">できること</p>
+    <h2>星よみを、暮らしにとどける</h2>
+    <p class="hoshikugiri">&#10022; &#10023; &#10022;</p>
+  </div>
+  <div class="services">
+
+    <div class="service">
+      <div class="icon">
+        <svg width="46" height="46" viewBox="0 0 46 46" aria-hidden="true">
+          <circle cx="23" cy="23" r="18" fill="none" stroke="#6e8784" stroke-width="1.5"/>
+          <path d="M30 11 a14 14 0 1 0 4 18 a11 11 0 0 1 -4 -18z" fill="#c9a86a"/>
+        </svg>
+      </div>
+      <p class="num">その一</p>
+      <h3>個人鑑定・鑑定書</h3>
+      <p>出生図やその年の星の流れをひとつずつ丁寧に読み解き、一冊の鑑定書としてお届けします。節目の年、大きな選択の前、自分を見つめ直したいときに。</p>
+      <a class="go" href="#kantei">メール鑑定をくわしく見る</a>
+    </div>
+
+    <div class="service">
+      <div class="icon">
+        <svg width="46" height="46" viewBox="0 0 46 46" aria-hidden="true">
+          <path d="M23 6 L26 18 L38 18 L28.5 25.5 L32 38 L23 30.5 L14 38 L17.5 25.5 L8 18 L20 18 Z"
+                fill="none" stroke="#6e8784" stroke-width="1.5" stroke-linejoin="round"/>
+          <circle cx="23" cy="23" r="3" fill="#c9a86a"/>
+        </svg>
+      </div>
+      <p class="num">その二</p>
+      <h3>note・Brainの教材</h3>
+      <p>実績ゼロの主婦から星よみを仕事にするまでの経験を、そのまま教材にしています。最初の商品づくりの記録や、発信を続けるための工夫など。</p>
+      <a class="go" href="https://note.com/omasu_horoscope" target="_blank" rel="noopener">noteで教材を見る</a>
+    </div>
+
+    <div class="service">
+      <div class="icon">
+        <svg width="46" height="46" viewBox="0 0 46 46" aria-hidden="true">
+          <circle cx="23" cy="23" r="17" fill="none" stroke="#6e8784" stroke-width="1.5"/>
+          <circle cx="23" cy="23" r="11" fill="none" stroke="#6e8784" stroke-width="1" opacity=".6"/>
+          <circle cx="23" cy="23" r="2.4" fill="#c9a86a"/>
+          <circle cx="23" cy="10" r="2" fill="#c9a86a"/>
+          <circle cx="34" cy="29" r="2" fill="#8d7bb0"/>
+          <circle cx="13" cy="31" r="2" fill="#6e8784"/>
+        </svg>
+      </div>
+      <p class="num">その三</p>
+      <h3>読者限定・星のウェブアプリ</h3>
+      <p>仮想タロットや月のこよみなど、手づくりの星のウェブアプリをLINE・メルマガの読者さま限定でお届けしています。「読んでもらう」だけでなく「自分で確かめられる」道具です。</p>
+      <a class="go" href="https://lin.ee/zI0K08R" target="_blank" rel="noopener">LINE登録で受けとる</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section id="about" class="reveal">
+  <div class="sec-head">
+    <p class="obi">おますについて</p>
+    <h2>星よみで、人生が一変した人</h2>
+    <p class="hoshikugiri">&#10022; &#10023; &#10022;</p>
+  </div>
+  <div class="tarot-card">
+    <span class="kado tl">&#10022;</span><span class="kado tr">&#10022;</span>
+    <span class="kado bl">&#10022;</span><span class="kado br">&#10022;</span>
+    <div class="about-grid">
+      <div>
+        <div class="prof-head">
+          <img class="prof-icon" src="data:image/webp;base64,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" alt="星よみ専門家おますのアイコン" width="96" height="96">
+          <p class="prof-name">
+            星よみ専門家おます
+            <span class="en">Omasu</span>
+          </p>
+        </div>
+        <p>40歳をすぎて、子育てや仕事に迷走していたふつうの主婦でした。星よみを学んだことで人生が一変し、今は星よみ専門家として活動しています。これまでにお届けした個人鑑定は<em>300件以上</em>。</p>
+        <p>大切にしているのは、星よみを「当たる・当たらない」で終わらせないこと。塵も積もれば山となる——<em>「チリつも」</em>を合言葉に、ホロスコープから受けとったヒントを今日できる小さな一歩に落とし込む。その積み重ねが、40代からの毎日を静かに変えていくと信じています。</p>
+        <p>同世代のお悩みに寄り添いながら、InstagramやVoicyで毎日の星よみを発信中です。</p>
+      </div>
+      <div class="about-note">
+        <b>屋号</b>：星よみ専門家おます<br>
+        <b>モットー</b>：40代からが本番！<br>
+        <b>鑑定実績</b>：300件以上<br>
+        <b>専門</b>：西洋占星術／タロット<br>
+        <b>発信</b>：Instagram・Voicy・stand.fm・Substack・LINE・note
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CHANNELS ============ -->
+<section id="channels" class="reveal">
+  <div class="sec-head">
+    <p class="obi">日々の星よみは、こちらで</p>
+    <h2>いちばん近い場所へどうぞ</h2>
+    <p class="hoshikugiri">&#10022; &#10023; &#10022;</p>
+  </div>
+
+  <div class="ch-featured">
+    <a class="ch-big" href="https://lin.ee/zI0K08R" target="_blank" rel="noopener">
+      <span class="st a">&#10022;</span><span class="st b">&#10023;</span>
+      <span class="tag">いちばん近い場所</span>
+      <span class="ch-name">おます公式LINE</span>
+      <span class="ch-desc">日々の星よみと、限定のお知らせをお届け。読者限定の星よみアプリや、鑑定・サービスのご案内もこちらから。</span>
+    </a>
+    <a class="ch-big" href="https://mail.os7.biz/add/D7pa" target="_blank" rel="noopener">
+      <span class="st a">&#10022;</span><span class="st b">&#10023;</span>
+      <span class="tag">先行案内・裏話</span>
+      <span class="ch-name">無料メルマガ</span>
+      <span class="ch-desc">noteや新サービスの先行案内、インスタでは書かない裏話、読者限定アプリのご案内を満席前にお届け。</span>
+    </a>
+  </div>
+
+  <div class="channels">
+    <a class="channel" href="https://www.instagram.com/omasu_horoscope/" target="_blank" rel="noopener">
+      <span class="ch-name">Instagram</span>
+      <span class="ch-desc">今日の星よみと、12星座別の投稿・リール。</span>
+    </a>
+    <a class="channel" href="https://voicy.jp/channel/960377" target="_blank" rel="noopener">
+      <span class="ch-name">Voicy</span>
+      <span class="ch-desc">「チリつもで人生を変える」星よみラジオ。家事や通勤のおともに。</span>
+    </a>
+    <a class="channel" href="https://stand.fm/channels/645c81c30b5e6b2d872f4d11" target="_blank" rel="noopener">
+      <span class="ch-name">stand.fm</span>
+      <span class="ch-desc">おますの星よみチャンネル。ゆるっと星の話を配信中。</span>
+    </a>
+    <a class="channel" href="https://note.com/omasu_horoscope" target="_blank" rel="noopener">
+      <span class="ch-name">note</span>
+      <span class="ch-desc">実践の記録と教材。星よみを仕事にする過程も公開中。</span>
+    </a>
+    <a class="channel" href="https://substack.com/@omasu" target="_blank" rel="noopener">
+      <span class="ch-name">Substack</span>
+      <span class="ch-desc">すこし長めの星よみとエッセイを、メールでお届け。</span>
+    </a>
+    <a class="channel" href="https://lit.link/omasuhoroscope" target="_blank" rel="noopener">
+      <span class="ch-name">lit.link</span>
+      <span class="ch-desc">すべてのリンクのまとめページはこちら。</span>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <p class="stars">&#10022; &#10023; &#10022;</p>
+  <span class="mark">星よみ専門家おます</span>
+  &copy; 2026 OMASU HOROSCOPE
+</footer>
+
+<script>
+  // 地平から昇るホロスコープの環
+  (function(){
+    const NS = "http://www.w3.org/2000/svg";
+    const spokes = document.getElementById("spokes");
+    const rays = document.getElementById("rays");
+    if(!spokes || !rays) return;
+    const cx = 600, cy = 848;
+
+    for(let i = 0; i <= 12; i++){
+      const deg = 180 + i * 15;
+      const a = deg * Math.PI / 180;
+      if(i % 2 === 0){
+        const l = document.createElementNS(NS, "line");
+        l.setAttribute("x1", cx + 252 * Math.cos(a));
+        l.setAttribute("y1", cy + 252 * Math.sin(a));
+        l.setAttribute("x2", cx + 300 * Math.cos(a));
+        l.setAttribute("y2", cy + 300 * Math.sin(a));
+        spokes.appendChild(l);
+      }
+      if(i % 2 === 0){
+        const r = document.createElementNS(NS, "line");
+        r.setAttribute("x1", cx + 310 * Math.cos(a));
+        r.setAttribute("y1", cy + 310 * Math.sin(a));
+        r.setAttribute("x2", cx + 355 * Math.cos(a));
+        r.setAttribute("y2", cy + 355 * Math.sin(a));
+        rays.appendChild(r);
+      }
+    }
+  })();
+
+
+  // きょうの星もよう：太陽・月の黄経を高精度に計算して表示
+  // （月の位置はMeeusの主要22項、朔弦望は国立天文台の公式値と誤差3分以内を確認済み）
+  (function(){
+    const RAD = Math.PI / 180;
+    const SIGNS = ["おひつじ座","おうし座","ふたご座","かに座","しし座","おとめ座","てんびん座","さそり座","いて座","やぎ座","みずがめ座","うお座"];
+    const YOBI = ["日","月","火","水","木","金","土"];
+
+    function norm(x){ x = x % 360; return x < 0 ? x + 360 : x; }
+    function T_of(ms){ return (ms / 86400000 + 2440587.5 - 2451545.0) / 36525; }
+
+    function sunLon(T){
+      const L0 = 280.46646 + 36000.76983 * T + 0.0003032 * T * T;
+      const M  = (357.52911 + 35999.05029 * T - 0.0001537 * T * T) * RAD;
+      const C  = (1.914602 - 0.004817 * T) * Math.sin(M)
+               + (0.019993 - 0.000101 * T) * Math.sin(2 * M)
+               + 0.000289 * Math.sin(3 * M);
+      return norm(L0 + C);
+    }
+
+    function moonLon(T){
+      const Lp = 218.3164477 + 481267.88123421 * T - 0.0015786 * T * T;
+      const D  = (297.8501921 + 445267.1114034 * T - 0.0018819 * T * T) * RAD;
+      const M  = (357.5291092 + 35999.0502909 * T - 0.0001536 * T * T) * RAD;
+      const Mp = (134.9633964 + 477198.8675055 * T + 0.0087414 * T * T) * RAD;
+      const F  = (93.2720950 + 483202.0175233 * T - 0.0036539 * T * T) * RAD;
+      const lon = Lp
+        + 6.288774 * Math.sin(Mp)
+        + 1.274027 * Math.sin(2 * D - Mp)
+        + 0.658314 * Math.sin(2 * D)
+        + 0.213618 * Math.sin(2 * Mp)
+        - 0.185116 * Math.sin(M)
+        - 0.114332 * Math.sin(2 * F)
+        + 0.058793 * Math.sin(2 * D - 2 * Mp)
+        + 0.057066 * Math.sin(2 * D - M - Mp)
+        + 0.053322 * Math.sin(2 * D + Mp)
+        + 0.045758 * Math.sin(2 * D - M)
+        - 0.040923 * Math.sin(M - Mp)
+        - 0.034720 * Math.sin(D)
+        - 0.030383 * Math.sin(M + Mp)
+        + 0.015327 * Math.sin(2 * D - 2 * F)
+        - 0.012528 * Math.sin(Mp + 2 * F)
+        + 0.010980 * Math.sin(Mp - 2 * F)
+        + 0.010675 * Math.sin(4 * D - Mp)
+        + 0.010034 * Math.sin(3 * Mp)
+        + 0.008548 * Math.sin(4 * D - 2 * Mp)
+        - 0.007888 * Math.sin(2 * D + M - Mp)
+        - 0.006766 * Math.sin(2 * D + M)
+        - 0.005163 * Math.sin(D - Mp);
+      return norm(lon);
+    }
+
+    function elong(ms){ const T = T_of(ms); return norm(moonLon(T) - sunLon(T)); }
+
+    // 位相角target（0=新月, 180=満月, 270=下弦…）の通過時刻を探す
+    function signedDiff(ms, target){
+      let d = norm(elong(ms) - target);
+      return d > 180 ? d - 360 : d;
+    }
+    function nextCross(fromMs, target){
+      let prev = fromMs, prevV = signedDiff(fromMs, target);
+      for(let h = 1; h <= 24 * 32; h++){
+        const cur = fromMs + h * 3600000, curV = signedDiff(cur, target);
+        if(prevV < 0 && curV >= 0){
+          let lo = prev, hi = cur;
+          while(hi - lo > 120000){ const mid = (lo + hi) / 2; if(signedDiff(mid, target) < 0){ lo = mid; } else { hi = mid; } }
+          return (lo + hi) / 2;
+        }
+        prev = cur; prevV = curV;
+      }
+      return null;
+    }
+    function prevCross(fromMs, target){
+      let prev = fromMs, prevV = signedDiff(fromMs, target);
+      for(let h = 1; h <= 24 * 32; h++){
+        const cur = fromMs - h * 3600000, curV = signedDiff(cur, target);
+        if(curV < 0 && prevV >= 0){
+          let lo = cur, hi = prev;
+          while(hi - lo > 120000){ const mid = (lo + hi) / 2; if(signedDiff(mid, target) < 0){ lo = mid; } else { hi = mid; } }
+          return (lo + hi) / 2;
+        }
+        prev = cur; prevV = curV;
+      }
+      return null;
+    }
+
+    // 呼び名：上弦・下弦・満月・新月は、実際の瞬間の前後半日だけに使う
+    function phaseName(e){
+      if(e < 6 || e > 354) return "新月のころ";
+      if(e <= 45)  return "三日月のころ";
+      if(e < 84)   return "みちてゆく月";
+      if(e <= 96)  return "上弦の月";
+      if(e < 174)  return "みちてゆく月";
+      if(e <= 186) return "満月のころ";
+      if(e < 264)  return "かけてゆく月";
+      if(e <= 276) return "下弦の月";
+      return "ありあけの月";
+    }
+
+    function drawMoon(svg, e){
+      while(svg.firstChild) svg.removeChild(svg.firstChild);
+      const NS = "http://www.w3.org/2000/svg";
+      const base = document.createElementNS(NS, "circle");
+      base.setAttribute("cx", 32); base.setAttribute("cy", 32); base.setAttribute("r", 21);
+      base.setAttribute("fill", "none");
+      base.setAttribute("stroke", "#f2ead6");
+      base.setAttribute("stroke-width", "1.7");
+      svg.appendChild(base);
+      if(e < 6 || e > 354){
+        for(const [x, y] of [[26, 28], [37, 33], [30, 39]]){
+          const dot = document.createElementNS(NS, "circle");
+          dot.setAttribute("cx", x); dot.setAttribute("cy", y); dot.setAttribute("r", 1.2);
+          dot.setAttribute("fill", "#f2ead6"); dot.setAttribute("opacity", ".6");
+          svg.appendChild(dot);
+        }
+        return;
+      }
+      if(Math.abs(e - 180) <= 6){
+        base.setAttribute("fill", "#f2ead6");
+        for(const [x, y, r] of [[27, 28, 2.6], [37, 34, 1.9], [30, 39, 1.4]]){
+          const c = document.createElementNS(NS, "circle");
+          c.setAttribute("cx", x); c.setAttribute("cy", y); c.setAttribute("r", r);
+          c.setAttribute("fill", "#ded3ae");
+          svg.appendChild(c);
+        }
+        return;
+      }
+      const rx = 21 * Math.abs(Math.cos(e * RAD));
+      let d;
+      if(e < 180){
+        const sweep = e < 90 ? 0 : 1;
+        d = "M32 11 A21 21 0 0 1 32 53 A" + rx + " 21 0 0 " + sweep + " 32 11 Z";
+      }else{
+        const e2 = 360 - e;
+        const sweep = e2 < 90 ? 1 : 0;
+        d = "M32 11 A21 21 0 0 0 32 53 A" + rx + " 21 0 0 " + sweep + " 32 11 Z";
+      }
+      const path = document.createElementNS(NS, "path");
+      path.setAttribute("d", d);
+      path.setAttribute("fill", "#f2ead6");
+      svg.appendChild(path);
+    }
+
+    function putArt(slotId, signIdx){
+      const slot = document.getElementById(slotId);
+      if(!slot) return;
+      while(slot.firstChild) slot.removeChild(slot.firstChild);
+      const src = document.querySelector('#seiza-lib svg[data-sign="' + signIdx + '"]');
+      if(src) slot.appendChild(src.cloneNode(true));
+    }
+
+    let offset = 0;
+    function render(){
+      const ms = Date.now() + offset * 86400000;
+      const date = new Date(ms);
+      const T = T_of(ms);
+      const sl = sunLon(T), ml = moonLon(T), e = norm(ml - sl);
+      const el = (id) => document.getElementById(id);
+      if(!el("hm-date")) return;
+      el("hm-date").textContent = date.getFullYear() + "年" + (date.getMonth() + 1) + "月" + date.getDate() + "日（" + YOBI[date.getDay()] + "）" + (offset > 0 ? "の空" : "");
+      // 月齢＝直前の新月からの経過日数（国立天文台の定義）
+      const lastNew = prevCross(ms, 0);
+      el("hm-age").textContent = lastNew ? ((ms - lastNew) / 86400000).toFixed(1) : "–";
+      el("hm-phasename").textContent = phaseName(e);
+      el("hm-moonsign").textContent = SIGNS[Math.floor(ml / 30) % 12];
+      el("hm-sunsign").textContent = SIGNS[Math.floor(sl / 30) % 12];
+      drawMoon(el("hm-moon"), e);
+      putArt("hm-moonsign-art", Math.floor(ml / 30) % 12);
+      putArt("hm-sunsign-art", Math.floor(sl / 30) % 12);
+      const nm = nextCross(ms, 0), fm = nextCross(ms, 180);
+      el("hm-newmoon").textContent = nm ? "つぎの新月は " + (new Date(nm).getMonth() + 1) + "月" + new Date(nm).getDate() + "日" : "";
+      el("hm-fullmoon").textContent = fm ? "つぎの満月は " + (new Date(fm).getMonth() + 1) + "月" + new Date(fm).getDate() + "日" : "";
+      const btn = el("hm-btn");
+      if(btn) btn.textContent = offset === 0 ? "▸ あすの星もようをのぞく" : (offset < 7 ? "▸ さらに次の日へ（いま +" + offset + "日）" : "↩ きょうにもどる");
+    }
+    const btn = document.getElementById("hm-btn");
+    if(btn) btn.addEventListener("click", function(){ offset = offset >= 7 ? 0 : offset + 1; render(); });
+    render();
+  })();
+
+  // スクロールで浮かび上がる演出
+  (function(){
+    const els = document.querySelectorAll(".reveal");
+    if(!("IntersectionObserver" in window)){
+      els.forEach(e => e.classList.add("on"));
+      return;
+    }
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(en => {
+        if(en.isIntersecting){
+          en.target.classList.add("on");
+          io.unobserve(en.target);
+        }
+      });
+    }, {threshold: .12});
+    els.forEach(e => io.observe(e));
+  })();
+</script>
+
+</body>
+</html>
