@@ -37,20 +37,25 @@
   .hero{padding:96px 0 72px;text-align:center;position:relative;overflow:hidden;}
   .hero .wrap{display:flex;flex-direction:column;align-items:center;}
   .hero .eyebrow{
-    display:flex;align-items:center;justify-content:center;min-width:220px;min-height:52px;
-    font-size:15px;font-weight:500;color:var(--green);
-    border:1px solid var(--green);border-radius:999px;padding:9px 28px;margin-bottom:40px;
+    display:inline-block;
+    font-size:15px;
+    font-weight:500;
+    letter-spacing:.18em;
+    text-indent:.18em; /* inline-blockなので有効。末尾字間を先頭で相殺 */
+    color:var(--green);
+    border:1px solid var(--green);
+    border-radius:999px;
+    padding:12px 28px;
+    margin-bottom:40px;
   }
   .hero h1{font-size:clamp(24px,5.5vw,34px);line-height:1.9;color:var(--green-deep);}
   .hero p.lead{margin-top:28px;color:var(--ink-soft);font-size:14px;}
-  .hero .eyebrow-text,
   .hero h1,
   .hero p.lead,
   .prose.center p{
     letter-spacing:.1em;
     padding-left:.1em;
   }
-  .hero .eyebrow-text{ display:inline-block; }
   .stars{position:absolute;inset:0;pointer-events:none;}
   .stars span{position:absolute;color:var(--gold);opacity:.55;font-size:13px;}
 
@@ -240,7 +245,7 @@
     <span style="top:72%;right:22%">✦</span>
   </div>
   <div class="wrap">
-    <span class="eyebrow"><span class="eyebrow-text">メール鑑定のご案内</span></span>
+    <span class="eyebrow">メール鑑定のご案内</span>
     <h1>必要なときに、<br>星の続きを読める。</h1>
     <p class="lead">人生が動けば、悩みや知りたいことも変わります。<br>星も、そのあいだ動き続けます。<br>これまで積み重ねてきた占星術の知識を出し惜しみせず、<br>必要になったとき、いまのあなたに役立つ形でお届けします。</p>
   </div>
