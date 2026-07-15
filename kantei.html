@@ -38,11 +38,15 @@
   .hero .wrap{display:flex;flex-direction:column;align-items:center;}
   .hero .eyebrow{
     display:flex;align-items:center;justify-content:center;min-width:220px;min-height:52px;
-    font-size:15px;font-weight:500;letter-spacing:.18em;text-indent:.18em;color:var(--green);
+    font-size:15px;font-weight:500;color:var(--green);
     border:1px solid var(--green);border-radius:999px;padding:9px 28px;margin-bottom:40px;
   }
-  .hero h1{font-size:clamp(24px,5.5vw,34px);line-height:1.9;color:var(--green-deep);}
-  .hero p.lead{margin-top:28px;color:var(--ink-soft);font-size:14px;}
+  .hero .eyebrow .eyebrow-text{
+    letter-spacing:.18em;
+    margin-right:-.18em;
+  }
+  .hero h1{font-size:clamp(24px,5.5vw,34px);line-height:1.9;color:var(--green-deep);padding-left:.12em;}
+  .hero p.lead{margin-top:28px;color:var(--ink-soft);font-size:14px;padding-left:.06em;}
   .stars{position:absolute;inset:0;pointer-events:none;}
   .stars span{position:absolute;color:var(--gold);opacity:.55;font-size:13px;}
 
@@ -54,6 +58,7 @@
   .prose{color:var(--ink);}
   .prose p+p{margin-top:1.6em;}
   .center{text-align:center;}
+  .prose.center p{padding-left:.06em;}
 
   /* ===== signature: 星の道 (vertical journey) ===== */
   .path{position:relative;margin-top:56px;}
@@ -231,7 +236,7 @@
     <span style="top:72%;right:22%">✦</span>
   </div>
   <div class="wrap">
-    <span class="eyebrow">メール鑑定のご案内</span>
+    <span class="eyebrow"><span class="eyebrow-text">メール鑑定のご案内</span></span>
     <h1>必要なときに、<br>星の続きを読める。</h1>
     <p class="lead">人生が動けば、悩みや知りたいことも変わります。<br>星も、そのあいだ動き続けます。<br>これまで積み重ねてきた占星術の知識を出し惜しみせず、<br>必要になったとき、いまのあなたに役立つ形でお届けします。</p>
   </div>
