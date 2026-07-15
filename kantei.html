@@ -41,12 +41,16 @@
     font-size:15px;font-weight:500;color:var(--green);
     border:1px solid var(--green);border-radius:999px;padding:9px 28px;margin-bottom:40px;
   }
-  .hero .eyebrow .eyebrow-text{
-    letter-spacing:.18em;
-    margin-right:-.18em;
+  .hero h1{font-size:clamp(24px,5.5vw,34px);line-height:1.9;color:var(--green-deep);}
+  .hero p.lead{margin-top:28px;color:var(--ink-soft);font-size:14px;}
+  .hero .eyebrow-text,
+  .hero h1,
+  .hero p.lead,
+  .prose.center p{
+    letter-spacing:.1em;
+    padding-left:.1em;
   }
-  .hero h1{font-size:clamp(24px,5.5vw,34px);line-height:1.9;color:var(--green-deep);padding-left:.12em;}
-  .hero p.lead{margin-top:28px;color:var(--ink-soft);font-size:14px;padding-left:.06em;}
+  .hero .eyebrow-text{ display:inline-block; }
   .stars{position:absolute;inset:0;pointer-events:none;}
   .stars span{position:absolute;color:var(--gold);opacity:.55;font-size:13px;}
 
@@ -58,7 +62,7 @@
   .prose{color:var(--ink);}
   .prose p+p{margin-top:1.6em;}
   .center{text-align:center;}
-  .prose.center p{padding-left:.06em;}
+  .prose.center p.hang{text-indent:-.5em;}
 
   /* ===== signature: 星の道 (vertical journey) ===== */
   .path{position:relative;margin-top:56px;}
@@ -245,7 +249,7 @@
 <!-- ===== 共感リード ===== -->
 <section>
   <div class="wrap prose center fade">
-    <p>「このままでいいのかな」と思う日が、<br>ふと増えていませんか。</p>
+    <p class="hang">「このままでいいのかな」と思う日が、<br>ふと増えていませんか。</p>
     <p>大きな不幸があるわけじゃない。<br>でも、なんとなく足元が定まらない。</p>
     <p>そんなとき、わたしは生まれた瞬間の星の配置——<br>出生図を開きます。そこには、あなたの性質、才能、<br>くり返しやすいパターン、いま迎えている時期の意味が、<br>静かに書き込まれています。</p>
   </div>
