@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>メール鑑定のご案内｜星よみ専門家おます</title>
+<meta name="description" content="フル鑑定のあとも、必要になったときに星の続きを読める、2回目以降の方のためのリピート鑑定をご用意しています。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&family=Zen+Kaku+Gothic+New:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FAF8F1;
+    --paper:#F3F0E6;
+    --green:#7D8C72;
+    --green-deep:#49543F;
+    --ink:#403A31;
+    --ink-soft:#6E675B;
+    --gold:#C2A65A;
+    --line:#DDD6C4;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Zen Kaku Gothic New',sans-serif;
+    font-weight:400;
+    background:var(--cream);
+    color:var(--ink);
+    line-height:2;
+    letter-spacing:.06em;
+    font-size:15px;
+  }
+  .wrap{max-width:640px;margin:0 auto;padding:0 24px;}
+  h1,h2,h3{font-family:'Zen Maru Gothic',sans-serif;font-weight:500;letter-spacing:.12em;}
+
+  /* ===== hero ===== */
+  .hero{padding:96px 0 72px;text-align:center;position:relative;overflow:hidden;}
+  .hero .eyebrow{
+    display:inline-block;font-size:12px;letter-spacing:.3em;color:var(--green);
+    border:1px solid var(--green);border-radius:999px;padding:6px 18px;margin-bottom:32px;
+  }
+  .hero h1{font-size:clamp(24px,5.5vw,34px);line-height:1.9;color:var(--green-deep);}
+  .hero p.lead{margin-top:28px;color:var(--ink-soft);font-size:14px;}
+  .stars{position:absolute;inset:0;pointer-events:none;}
+  .stars span{position:absolute;color:var(--gold);opacity:.55;font-size:13px;}
+
+  /* ===== section base ===== */
+  section{padding:72px 0;}
+  section.alt{background:var(--paper);}
+  .sec-title{text-align:center;font-size:20px;color:var(--green-deep);margin-bottom:14px;}
+  .sec-note{text-align:center;font-size:12px;letter-spacing:.25em;color:var(--gold);margin-bottom:44px;}
+  .prose{color:var(--ink);}
+  .prose p+p{margin-top:1.6em;}
+  .center{text-align:center;}
+
+  /* ===== signature: 星の道 (vertical journey) ===== */
+  .path{position:relative;margin-top:56px;}
+  .path::before{
+    content:"";position:absolute;left:31px;top:12px;bottom:12px;width:0;
+    border-left:2px dotted var(--green);opacity:.6;
+  }
+  .step{position:relative;padding:0 0 56px 88px;}
+  .step:last-child{padding-bottom:0;}
+  .moon{
+    position:absolute;left:0;top:0;width:64px;height:64px;border-radius:50%;
+    background:var(--cream);border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;font-size:26px;
+  }
+  .step h3{font-size:17px;color:var(--green-deep);margin-bottom:4px;}
+  .step .tag{
+    display:inline-block;font-size:11px;letter-spacing:.2em;color:var(--cream);
+    background:var(--green);border-radius:3px;padding:2px 10px;margin-bottom:12px;
+  }
+  .step .tag.ghost{background:transparent;color:var(--green);border:1px solid var(--green);}
+  .step p{font-size:14px;color:var(--ink-soft);}
+  .step .price{font-family:'Zen Maru Gothic',sans-serif;color:var(--ink);font-size:15px;margin-top:10px;}
+  .step .price b{font-size:22px;letter-spacing:.05em;}
+  .step-points{list-style:none;margin:12px 0 4px;}
+  .step-points li{
+    position:relative;padding:3px 0 3px 18px;font-size:13px;color:var(--ink-soft);
+  }
+  .step-points li::before{content:"✓";position:absolute;left:0;color:var(--green);}
+
+  /* ===== 中身 ===== */
+  .list{list-style:none;margin-top:8px;}
+  .list li{
+    padding:14px 0 14px 30px;border-bottom:1px solid var(--line);position:relative;font-size:14.5px;
+  }
+  .list li::before{content:"✦";position:absolute;left:4px;color:var(--gold);font-size:12px;}
+  .list li:last-child{border-bottom:none;}
+
+  /* ===== 鑑定内容の詳細 ===== */
+  .offer-lead{max-width:560px;margin:0 auto 34px;font-size:14px;color:var(--ink-soft);}
+  .deliverable{
+    margin-top:38px;padding:28px;border:1px solid var(--line);border-radius:14px;background:var(--cream);
+  }
+  .deliverable h3{text-align:center;font-size:15px;color:var(--green-deep);margin-bottom:18px;}
+  .specs{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+  .spec{
+    text-align:center;padding:15px 8px;border-radius:9px;background:var(--paper);
+    font-size:11.5px;color:var(--ink-soft);line-height:1.7;
+  }
+  .spec strong{
+    display:block;font-family:'Zen Maru Gothic',sans-serif;font-size:15px;
+    color:var(--green-deep);letter-spacing:.08em;margin-bottom:3px;
+  }
+  .deliverable .note{margin-top:18px;text-align:center;font-size:12.5px;color:var(--ink-soft);}
+  .for-you{
+    margin-top:32px;padding:24px 26px;border-left:3px solid var(--green);
+    background:rgba(125,140,114,.08);font-size:13.5px;color:var(--ink-soft);
+  }
+  .for-you b{display:block;color:var(--green-deep);margin-bottom:8px;}
+  .plan .summary{margin-top:10px;color:var(--ink);font-size:13.5px;}
+  .plan-points{list-style:none;margin:18px 0 0;}
+  .plan-points li{
+    position:relative;padding:7px 0 7px 20px;border-bottom:1px dotted var(--line);
+    font-size:12.5px;color:var(--ink-soft);
+  }
+  .plan-points li::before{content:"✓";position:absolute;left:0;color:var(--green);}
+  .plan-points li:last-child{border-bottom:none;}
+
+  /* ===== お申込み前の確認事項 ===== */
+  .notice-intro{max-width:560px;margin:0 auto 34px;text-align:center;font-size:13.5px;color:var(--ink-soft);}
+  .notice-box{
+    margin-top:20px;padding:28px;border:1px solid var(--line);border-radius:14px;background:var(--cream);
+  }
+  .notice-box.important{border-color:var(--gold);background:#FBF7EA;}
+  .notice-box h3{font-size:16px;color:var(--green-deep);margin-bottom:16px;}
+  .notice-list{list-style:none;}
+  .notice-list li{
+    position:relative;padding:10px 0 10px 22px;border-bottom:1px dotted var(--line);
+    font-size:13.5px;color:var(--ink-soft);line-height:1.9;
+  }
+  .notice-list li::before{content:"—";position:absolute;left:0;color:var(--gold);}
+  .notice-list li:last-child{border-bottom:none;}
+  .notice-list b{color:var(--ink);font-weight:500;}
+  .notice-small{margin-top:16px;font-size:12px;color:var(--ink-soft);line-height:1.9;}
+  .notice-definition{
+    margin:14px 0;padding:12px 14px;border-radius:8px;background:var(--paper);
+    font-size:12.5px;color:var(--green-deep);line-height:1.9;
+  }
+
+  /* ===== voice ===== */
+  .voice{background:var(--cream);border:1px solid var(--line);border-radius:14px;padding:28px 28px 22px;margin-top:24px;}
+  .voice p{font-size:14px;}
+  .voice .name{display:block;text-align:right;margin-top:12px;font-size:12px;color:var(--ink-soft);}
+  .stars-badge{text-align:center;margin-top:32px;font-size:13px;color:var(--ink-soft);letter-spacing:.15em;}
+  .stars-badge b{color:var(--gold);letter-spacing:.2em;}
+
+  /* ===== 料金表 ===== */
+  .plans{margin-top:40px;display:grid;gap:20px;}
+  .plan{border:1px solid var(--line);border-radius:16px;background:var(--cream);padding:32px 28px;}
+  .plan.first{border-color:var(--green);}
+  .plan .who{font-size:11px;letter-spacing:.25em;color:var(--green);margin-bottom:8px;}
+  .plan h3{font-size:17px;color:var(--green-deep);}
+  .plan .price{font-family:'Zen Maru Gothic',sans-serif;margin:14px 0 12px;}
+  .plan .price b{font-size:26px;}
+  .plan .price span{font-size:12px;color:var(--ink-soft);}
+  .plan p{font-size:13.5px;color:var(--ink-soft);}
+  .plan .cap{
+    margin-top:16px;font-size:12px;color:var(--green-deep);
+    background:var(--paper);border-radius:8px;padding:10px 14px;line-height:1.8;
+  }
+
+  /* ===== 受付枠 ===== */
+  .waku{
+    margin-top:48px;text-align:center;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+    padding:32px 0;font-size:14px;
+  }
+  .waku b{font-family:'Zen Maru Gothic',sans-serif;color:var(--green-deep);font-size:16px;}
+
+  /* ===== FAQ ===== */
+  .faq{margin-top:8px;}
+  .faq details{border-bottom:1px solid var(--line);}
+  .faq summary{
+    cursor:pointer;list-style:none;padding:20px 36px 20px 4px;font-size:14.5px;position:relative;
+    font-family:'Zen Maru Gothic',sans-serif;color:var(--green-deep);
+  }
+  .faq summary::-webkit-details-marker{display:none;}
+  .faq summary::after{content:"＋";position:absolute;right:8px;color:var(--gold);}
+  .faq details[open] summary::after{content:"−";}
+  .faq .a{padding:0 4px 24px;font-size:14px;color:var(--ink-soft);}
+
+  /* ===== CTA ===== */
+  .cta{padding:80px 0;text-align:center;background:var(--green-deep);color:var(--cream);}
+  .cta h2{font-size:20px;letter-spacing:.15em;color:var(--cream);}
+  .cta p{margin-top:16px;font-size:13.5px;opacity:.85;}
+  .btn{
+    display:inline-block;margin-top:36px;background:var(--cream);color:var(--green-deep);
+    font-family:'Zen Maru Gothic',sans-serif;font-weight:700;letter-spacing:.15em;
+    padding:18px 52px;border-radius:999px;text-decoration:none;font-size:15px;
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.18);}
+  .btn:focus-visible{outline:3px solid var(--gold);outline-offset:3px;}
+  .cta .repeat{margin-top:44px;padding-top:32px;border-top:1px dotted rgba(250,248,241,.35);font-size:13px;opacity:.85;}
+
+  /* ===== footer ===== */
+  footer{padding:56px 0 72px;text-align:center;font-size:12.5px;color:var(--ink-soft);letter-spacing:.15em;line-height:2.4;}
+  footer .sig{font-family:'Zen Maru Gothic',sans-serif;color:var(--green-deep);font-size:14px;margin-top:8px;}
+
+  @media (prefers-reduced-motion:no-preference){
+    .fade{opacity:0;transform:translateY(14px);transition:opacity .8s ease,transform .8s ease;}
+    .fade.in{opacity:1;transform:none;}
+  }
+  @media (max-width:480px){
+    section{padding:56px 0;}
+    .step{padding-left:76px;}
+    .moon{width:56px;height:56px;font-size:22px;}
+    .path::before{left:27px;}
+    .specs{grid-template-columns:1fr;}
+    .deliverable{padding:24px 20px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<header class="hero">
+  <div class="stars" aria-hidden="true">
+    <span style="top:18%;left:12%">✦</span>
+    <span style="top:30%;right:14%">✧</span>
+    <span style="top:64%;left:20%">✧</span>
+    <span style="top:72%;right:22%">✦</span>
+  </div>
+  <div class="wrap">
+    <span class="eyebrow">メール鑑定のご案内</span>
+    <h1>必要なときに、<br>星の続きを読める。</h1>
+    <p class="lead">人生が動けば、悩みや知りたいことも変わります。<br>星も、そのあいだ動き続けます。<br>これまで積み重ねてきた占星術の知識を出し惜しみせず、<br>必要になったとき、いまのあなたに役立つ形でお届けします。</p>
+  </div>
+</header>
+
+<!-- ===== 共感リード ===== -->
+<section>
+  <div class="wrap prose fade">
+    <p>「このままでいいのかな」と思う日が、<br>ふと増えていませんか。</p>
+    <p>大きな不幸があるわけじゃない。<br>でも、なんとなく足元が定まらない。</p>
+    <p>そんなとき、わたしは生まれた瞬間の星の配置——<br>出生図を開きます。そこには、あなたの性質、才能、<br>くり返しやすいパターン、いま迎えている時期の意味が、<br>静かに書き込まれています。</p>
+  </div>
+</section>
+
+<!-- ===== 星の道（signature） ===== -->
+<section class="alt">
+  <div class="wrap">
+    <h2 class="sec-title">鑑定の流れ</h2>
+    <p class="sec-note">— YOUR STAR JOURNEY —</p>
+
+    <div class="path">
+
+      <div class="step fade">
+        <div class="moon" aria-hidden="true">🌕</div>
+        <span class="tag">はじめての方はここから</span>
+        <h3>① フル鑑定</h3>
+        <p>本質・感情・才能・仕事・お金・人間関係・人生の転機まで、出生図全体を12の視点から読み解きます。いまのお悩みも3つまで伺い、約8,000字の鑑定書（PDF）に全文書き下ろしでお届けします。</p>
+        <p class="price"><b>9,800</b> 円（税込）</p>
+      </div>
+
+      <div class="step fade">
+        <div class="moon" aria-hidden="true">🌗</div>
+        <span class="tag ghost">鑑定のあと</span>
+        <h3>② 出生図を大切にお預かり</h3>
+        <p>鑑定のあとも、あなたの出生図は大切にお預かりします。鑑定書には、これからあなたの星が動く「節目の時期」も記されています。</p>
+      </div>
+
+      <div class="step fade">
+        <div class="moon" aria-hidden="true">🌘</div>
+        <span class="tag ghost">必要だと感じたときに</span>
+        <h3>③ ご自身のタイミングで</h3>
+        <p>環境が変わったとき、新しいお悩みが生まれたとき、これからの流れを改めて知りたくなったとき。必要だと感じたタイミングで、お客様からお申し込みいただけます。</p>
+      </div>
+
+      <div class="step fade">
+        <div class="moon" aria-hidden="true">🌒</div>
+        <span class="tag">2回目以降の方だけ</span>
+        <h3>④ リピート鑑定</h3>
+        <p>初回で読み解いた出生図を土台に、前回からの変化と、これからの一年をまるごと読み直します。</p>
+        <ul class="step-points">
+          <li>前回の鑑定との答え合わせ</li>
+          <li>これから一年の全体の流れ</li>
+          <li>仕事・人間関係・お金・暮らしの変化</li>
+          <li>重要な時期と、具体的な行動のヒント</li>
+          <li>いまのお悩み・ご質問3つまで</li>
+        </ul>
+        <p>約4,500〜5,500字の鑑定書（PDF）としてお届けします。</p>
+        <p class="price"><b>5,980</b> 円（税込）<br><span style="font-size:12px;color:var(--ink-soft)">※フル鑑定をお受けいただいた方限定・必要なときにお申し込みいただけます</span></p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== フル鑑定の中身 ===== -->
+<section>
+  <div class="wrap">
+    <h2 class="sec-title">あなたの星を、12の視点から読み解きます</h2>
+    <p class="sec-note">— FULL READING —</p>
+
+    <div class="prose center fade offer-lead">
+      <p>出生図に書かれているのは、性格の一部分だけではありません。<br>心の動き、才能、働き方、人との関わり、人生の節目までを一つにつなげて、「あなたという人の全体像」を一冊にまとめます。</p>
+    </div>
+
+    <ul class="list fade">
+      <li><b>1｜生まれ持った本質</b> — 自然体のあなた、人生で大切にしたい軸、無理をしているときのサイン</li>
+      <li><b>2｜感情と心の満たし方</b> — 安心できる条件、傷つきやすい場面、自分の心を回復させる方法</li>
+      <li><b>3｜外から見えるあなた</b> — 第一印象、人との距離の取り方、周囲から期待されやすい役割</li>
+      <li><b>4｜才能と隠れた可能性</b> — 当たり前にできること、まだ自覚していない強み、伸ばすと武器になる力</li>
+      <li><b>5｜仕事とキャリア</b> — 向いている働き方、評価されやすい分野、仕事で大切にしたいこと</li>
+      <li><b>6｜お金と価値観</b> — お金との付き合い方、安心につながる使い方・働き方、自分にとっての豊かさ</li>
+      <li><b>7｜恋愛とパートナーシップ</b> — 惹かれやすい相手、愛情表現の癖、心地よい関係を育てるためのヒント</li>
+      <li><b>8｜家族・居場所・暮らし</b> — 心から休める場所、家庭で担いやすい役割、暮らしを整えるポイント</li>
+      <li><b>9｜くり返しやすいパターン</b> — つまずきやすい場面、その背景にある心の動き、楽になるための視点</li>
+      <li><b>10｜いま迎えている人生のテーマ</b> — なぜいま迷いや変化が起きているのか、現在地を星の動きから整理します</li>
+      <li><b>11｜これから数年の節目</b> — 流れが変わりやすい時期、育てておきたいこと、焦らなくてよい時期</li>
+      <li><b>12｜いまのお悩み・ご質問3つまで</b> — 出生図全体を踏まえて、現在気になっていることへ具体的にお返事します</li>
+    </ul>
+
+    <div class="for-you fade">
+      <b>鑑定書を読み終えたあとに残るもの</b>
+      「どうして同じことで悩むのか」「どこで力を発揮しやすいのか」「いまはどんな時期なのか」が一本につながり、自分の選択を自分で決めるための軸が見えてきます。
+    </div>
+
+    <div class="deliverable fade">
+      <h3>お手元に届くもの</h3>
+      <div class="specs">
+        <div class="spec"><strong>約8,000字</strong>12項目・全文書き下ろしPDF</div>
+        <div class="spec"><strong>10日以内</strong>お支払い確認後に制作</div>
+        <div class="spec"><strong>ご質問2回</strong>お届け後3日以内</div>
+      </div>
+      <p class="note">テンプレートの流用はありません。出生図とお悩みを一つにつなげ、いまのあなたのためだけに最初の一文字から書き起こします。</p>
+    </div>
+  </div>
+</section><!-- ===== リピート鑑定の詳細 ===== -->
+<section class="alt">
+  <div class="wrap">
+    <h2 class="sec-title">いまのあなたと、これからの一年を読み直します</h2>
+    <p class="sec-note">— REPEAT READING —</p>
+
+    <div class="prose fade offer-lead">
+      <p>フル鑑定で読み解いたあなたの本質は、そのまま大切に土台として使います。<br>リピート鑑定では、前回から何が変わったのかを確かめながら、仕事だけ、恋愛だけと分けずに、いまの生活全体とこれからの一年を読み直します。</p>
+      <p>定期的に受ける必要はありません。新しい悩みが生まれたとき、大きな選択を前にしたとき、流れを整理したくなったときにお申し込みください。</p>
+    </div>
+
+    <ul class="list fade">
+      <li><b>前回の鑑定書との答え合わせ</b> — お伝えした節目に何が起きたか、当時の読みと現在の実感を重ねます</li>
+      <li><b>現在地の整理</b> — 前回から変わったこと、いま抱えている迷い、心の奥で求めているものを読み解きます</li>
+      <li><b>これから一年の全体テーマ</b> — この一年が何を育て、手放し、選び直す時期なのかをお伝えします</li>
+      <li><b>仕事・キャリア</b> — 働き方の変化、挑戦しやすい時期、力を注ぎたい方向を読みます</li>
+      <li><b>人間関係・パートナーシップ</b> — 関係性の変化、自分らしい距離感、対話で意識したいことを読みます</li>
+      <li><b>お金・暮らし・心身のペース</b> — 生活の土台を整えるポイント、無理が出やすい時期、安心を育てる方法を読みます</li>
+      <li><b>重要な時期を3〜5つ</b> — 動きやすい時期、立ち止まって整えたい時期、それぞれの過ごし方をお伝えします</li>
+      <li><b>いまのお悩み・ご質問3つまで</b> — 選択に迷っていることや具体的なご相談へ、星の動きと性質の両面からお返事します</li>
+      <li><b>これからの行動のヒント</b> — 鑑定を読んだあと、日常で何から始めればよいかを具体的にまとめます</li>
+    </ul>
+
+    <div class="for-you fade">
+      <b>こんなときにおすすめです</b>
+      転職・独立・引っ越しなど環境が変わるとき／人間関係やパートナーシップに変化があったとき／複数の選択肢で迷っているとき／以前の鑑定から状況が大きく動いたとき
+    </div>
+
+    <div class="deliverable fade">
+      <h3>お手元に届くもの</h3>
+      <div class="specs">
+        <div class="spec"><strong>約4,500〜5,500字</strong>現在地と一年の流れを読むPDF</div>
+        <div class="spec"><strong>7日以内</strong>出生データの再入力不要</div>
+        <div class="spec"><strong>確認質問1回</strong>お届け後3日以内</div>
+      </div>
+      <p class="note">フル鑑定をお受けいただいたご本人さま限定です。初回の内容を繰り返さず、その先に起きた変化と、いま必要な読み解きに文字数を使います。</p>
+    </div>
+  </div>
+</section><!-- ===== お客様の声 ===== -->
+<section>
+  <div class="wrap">
+    <h2 class="sec-title">受け取った方の声</h2>
+    <p class="sec-note">— VOICES —</p>
+
+    <div class="voice fade">
+      <p>お会いしたことも話したこともないのに…？？と不思議なくらい合ってました！客観的に自分を知りたい、もしくは感覚ではわかっているけれど言語化したい人にぴったりだと思います。</p>
+      <span class="name">haru さん</span>
+    </div>
+
+    <div class="voice fade">
+      <p>メール鑑定なのに、実際にお会いして色々お話をした上で占っていただけたような感覚になるくらい、しっくり来る結果でした。心のつっかえがとれたようなスッキリした気持ちになれました。</p>
+      <span class="name">ここ さん</span>
+    </div>
+
+    <div class="voice fade">
+      <p>どんな自分でもいいのかな。もう少し自分を愛してみようかな。って、ありのままの自分に向き合うきっかけづくりをしてくれるような、心が緩む鑑定書でした。</p>
+      <span class="name">うととん さん</span>
+    </div>
+
+    <p class="stars-badge fade"><b>★★★★★</b>　レビュー平均 5.0（STORES）</p>
+  </div>
+</section>
+
+<!-- ===== 料金 ===== -->
+<section class="alt">
+  <div class="wrap">
+    <h2 class="sec-title">料金</h2>
+    <p class="sec-note">— PRICE —</p>
+
+    <div class="plans">
+      <div class="plan first fade">
+        <p class="who">はじめての方｜自分の全体像を知る</p>
+        <h3>フル鑑定</h3>
+        <p class="price"><b>¥9,800</b> <span>税込</span></p>
+        <p class="summary">生まれ持った本質から、才能・仕事・お金・人間関係・人生の節目まで。あなたという人を12の視点から読み解きます。</p>
+        <ul class="plan-points">
+          <li>12項目・約8,000字の全文書き下ろしPDF</li>
+          <li>本質・感情・才能・仕事・お金・恋愛・家族</li>
+          <li>現在のテーマと、これから数年の節目</li>
+          <li>いまのお悩み・ご質問3つまで</li>
+          <li>10日以内にお届け・ご質問2回まで</li>
+        </ul>
+        <p class="cap">正確な出生時間（時・分）が必要です。おわかりにならない方はお申込みいただけません。</p>
+      </div>
+
+      <div class="plan fade">
+        <p class="who">2回目以降の方｜現在地を更新する</p>
+        <h3>リピート鑑定</h3>
+        <p class="price"><b>¥5,980</b> <span>税込</span></p>
+        <p class="summary">前回からの変化を確かめながら、いまの生活全体と、これから一年の流れを読み直します。</p>
+        <ul class="plan-points">
+          <li>約4,500〜5,500字の全文書き下ろしPDF</li>
+          <li>仕事・人間関係・お金・暮らしの変化</li>
+          <li>これから一年の全体テーマ</li>
+          <li>重要な時期3〜5つ・ご質問3つまで</li>
+          <li>7日以内にお届け・確認質問1回まで</li>
+        </ul>
+        <p class="cap">フル鑑定をお受けいただいたご本人さま限定です。必要になったタイミングで、鑑定時のメールへの返信または公式LINEからお申し込みください。</p>
+      </div>
+    </div>
+    <div class="waku fade">
+      すべて全文書き下ろしのため、<br>
+      フル鑑定・リピート鑑定を合わせて、<br>
+      毎月の受付は <b>4名さままで</b> です。<br>
+      <span style="font-size:12.5px;color:var(--ink-soft)">定員に達した場合は、翌月のご案内となります。</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== お申込み前の確認事項 ===== -->
+<section>
+  <div class="wrap">
+    <h2 class="sec-title">お申込み前に必ずご確認ください</h2>
+    <p class="sec-note">— IMPORTANT INFORMATION —</p>
+    <p class="notice-intro fade">安心して鑑定を受けていただくために、お受けしていないご相談と、キャンセル・返金の条件をあらかじめ明記しています。内容をご確認のうえ、お申し込みください。</p>
+
+    <div class="notice-box fade">
+      <h3>鑑定をお受けしていない内容</h3>
+      <ul class="notice-list">
+        <li><b>人の生死・寿命・死因に関すること</b> — ご本人・第三者を問わず、死亡時期や余命などは鑑定しません</li>
+        <li><b>病気・けが・妊娠・出産など医療に関すること</b> — 診断、治療方法、薬、妊娠の可否、胎児の性別、精神状態の診断などは医療機関へご相談ください</li>
+        <li><b>ペット・動物に関すること</b> — 健康、生死、気持ち、行方を含め、ペット・動物の鑑定は行っていません</li>
+        <li><b>法律・訴訟・税務・労務など専門資格を要すること</b> — 法的判断、裁判の結果、契約や相続、税金、労働問題などは各専門家へご相談ください</li>
+        <li><b>投資・ギャンブル・金銭的な結果の予測</b> — 株・FX・暗号資産・宝くじ・競馬・賭け事、利益や当選の予測はお受けしません</li>
+        <li><b>不倫・略奪愛・既婚者との関係に関すること</b> — 関係の成就、相手の離婚、家庭の破綻を望む内容を含め、お受けしていません</li>
+        <li><b>犯罪・復讐・呪い・他者を傷つけること</b> — 違法行為、仕返し、嫌がらせ、相手を意のままに動かす方法、ストーカー行為につながる内容はお断りします</li>
+        <li><b>第三者のプライバシーを探ること</b> — 本人の同意なく出生情報を使用する鑑定、居場所・行動・秘密・気持ちを一方的に探るご相談はお受けしません</li>
+        <li><b>結果の断定を求めること</b> — 試験の合否、選考・勝敗、未来の出来事や日付を確実に当てること、望む結果の保証はできません</li>
+        <li><b>同業者による調査・評価目的のお申込み</b> — 鑑定技法や文章構成の確認、サービス調査、教材・コンテンツへの転用を目的とするお申込みはお断りします</li>
+        <li><b>短期間で同じ答えを求める再鑑定</b> — 状況に変化がないまま同じ質問を繰り返すことや、希望する答えが出るまで鑑定を求めることはお受けしません</li>
+        <li><b>18歳未満の方からのお申込み</b> — 保護者の同意が確認できない場合は鑑定をお受けできません</li>
+      </ul>
+      <p class="notice-small">上記に該当する場合や、鑑定の範囲を超えると判断した場合は、鑑定開始前にお断りし、お支払い済みの代金を返金します。</p>
+    </div>
+
+    <div class="notice-box important fade">
+      <h3>キャンセル・変更・返金について</h3>
+      <div class="notice-definition"><b>「鑑定開始」とは</b><br>必要な出生データとご相談内容がすべて揃い、こちらからメールまたは公式LINEで「鑑定を開始します」とお知らせした時点を指します。</div>
+      <ul class="notice-list">
+        <li><b>鑑定開始前</b> — キャンセルをご希望の場合は、鑑定開始のご連絡前までにお知らせください。開始前であれば全額返金します</li>
+        <li><b>鑑定開始後</b> — 出生図の再確認・星の分析・個別文章の作成に着手するため、お客様都合によるキャンセル、内容変更、返金はお受けできません</li>
+        <li><b>申込情報の誤り</b> — 鑑定開始後に生年月日・出生時間・出生地などの誤りが判明した場合、無料での再計算・全面的な書き直しはできません。内容により追加料金または再申込みをご案内します</li>
+        <li><b>鑑定結果への感じ方</b> — 「思っていた答えと違った」「当たっていないと感じた」など、鑑定内容に対する主観的な理由での返金はお受けできません。氏名・数値・記載内容に明らかな誤りがある場合は修正します</li>
+
+      </ul>
+      <p class="notice-small">法令上、取消し・解除・返金が認められる場合を妨げるものではありません。</p>
+    </div>
+
+    <div class="notice-box fade">
+      <h3>鑑定の性質とご利用上のお願い</h3>
+      <ul class="notice-list">
+        <li><b>鑑定は意思決定を支えるためのものです</b> — 未来や成果を保証するものではありません。最終的な判断と行動は、お客様ご自身の責任でお選びください</li>
+        <li><b>正確な情報をご入力ください</b> — 鑑定内容は、ご申告いただいた生年月日・出生時間・出生地・ご相談内容をもとに作成します。送信前に必ずご確認ください</li>
+        <li><b>一つの鑑定書につき一名さまです</b> — ご家族やパートナーなど別の方の出生図を含む場合は、ご本人の同意と正確な出生情報が必要です。内容により別途お申込みをご案内します</li>
+        <li><b>納期は情報がすべて揃ってから起算します</b> — お支払いだけでなく、必要な出生データとご相談内容の受領後から制作日数を数えます</li>
+        <li><b>納品後のご質問には範囲があります</b> — ご質問は鑑定書の記載内容の確認に限ります。新しいテーマや追加鑑定にあたる内容は、別途お申込みが必要です</li>
+        <li><b>鑑定書はご本人の私的利用に限ります</b> — 無断転載、複製、販売、配布、SNS等への全文掲載、教材・AI学習・同業サービスへの転用はお断りします</li>
+        <li><b>安心してやり取りできない場合はお断りします</b> — 暴言、威圧、誹謗中傷、過度な要求、執拗な連絡、虚偽の申告がある場合は、以後の鑑定をお断りすることがあります</li>
+      </ul>
+    </div>
+  </div>
+</section>
+<!-- ===== FAQ ===== -->
+<section class="alt">
+  <div class="wrap">
+    <h2 class="sec-title">よくあるご質問</h2>
+    <p class="sec-note">— Q &amp; A —</p>
+    <div class="faq fade">
+      <details>
+        <summary>出生時間がわからなくても申込めますか？</summary>
+        <div class="a">申し訳ないのですが、正確な出生時間（時・分）が必要です。母子手帳でご確認いただくか、出生された病院・役所（出生届の記載事項証明）でお調べいただけます。</div>
+      </details>
+      <details>
+        <summary>悩みが漠然としていても大丈夫ですか？</summary>
+        <div class="a">大丈夫です。「なんとなくモヤモヤする」「このままでいいのか不安」——そこから一緒に言葉にしていくのが、この鑑定の役割です。</div>
+      </details>
+      <details>
+        <summary>フル鑑定とリピート鑑定はどう違いますか？</summary>
+        <div class="a">フル鑑定は、本質・感情・才能・仕事・お金・人間関係・人生の節目など、「あなたの全体像」を12の視点から読む、はじめての方向けの鑑定です。リピート鑑定は、その内容を土台にして、前回からの変化と、現在地・これから一年の流れを読み直します。</div>
+      </details>
+      <details>
+        <summary>リピート鑑定は定期的に受けるものですか？</summary>
+        <div class="a">いいえ、定期鑑定や継続契約ではありません。新しいお悩みが生まれたとき、環境が変わったとき、これからの流れを改めて知りたいときに、ご自身のタイミングでお申し込みください。</div>
+      </details>
+      <details>
+        <summary>リピート鑑定はどうすれば申し込めますか？</summary>
+        <div class="a">こちらからのご案内を待つ必要はありません。必要になったタイミングで、鑑定時のメールにご返信いただくか、公式LINEから「リピート鑑定希望」とお送りください。内容を確認し、お申し込み方法をご案内します。</div>
+      </details>
+      <details>
+        <summary>申込み後にキャンセルできますか？</summary>
+        <div class="a">こちらから「鑑定を開始します」とお知らせする前であれば、全額返金のうえキャンセルできます。鑑定開始後は、出生図の分析と個別文章の作成に着手するため、お客様都合によるキャンセル・内容変更・返金はお受けできません。ただし、法令上返金が必要な場合は除きます。</div>
+      </details>
+      <details>
+        <summary>未来を「当てて」もらえますか？</summary>
+        <div class="a">わたしの鑑定は、未来の断定や吉凶判断をするものではありません。あなたの性質と、いま巡っている時期の意味を言葉にして、次の一歩を選ぶための「心の地図」をお渡しするものです。</div>
+      </details>
+      <details>
+        <summary>家族やパートナーのことも見てもらえますか？</summary>
+        <div class="a">一つの鑑定書につき一名様ずつのお申込みです。ご家族やパートナーなど他の方の出生図を含める場合は、ご本人の同意と正確な出生情報が必要です。内容に応じて別途ご案内しますので、お問い合わせください。</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="cta">
+  <div class="wrap">
+    <h2>あなたの星を、読ませてください</h2>
+    <p>今月の受付枠が埋まり次第、翌月のご案内となります。</p>
+    <a class="btn" href="https://omasuhoroscope.stores.jp/items/65f25bdbd397ae00328f8b2d">フル鑑定を申し込む</a>
+    <p class="repeat">以前フル鑑定をお受けいただいた方へ：<br>必要になったときに、鑑定時のメールへの返信または公式LINEから「リピート鑑定希望」とお知らせください。</p>
+  </div>
+</section>
+
+<footer>
+  <p>星よみ専門家おます</p>
+  <p class="sig">太陽山羊座・月蠍座。<br>山羊と蠍のあいだで、星を読んでいます。</p>
+</footer>
+
+<script>
+  // scroll-in fade (reduced motion respected via CSS)
+  const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.15});
+  document.querySelectorAll('.fade').forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>
