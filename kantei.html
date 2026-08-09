@@ -123,6 +123,13 @@
     color:var(--green-deep);letter-spacing:.08em;margin-bottom:3px;
   }
   .deliverable .note{margin-top:18px;text-align:center;font-size:12.5px;color:var(--ink-soft);}
+  /* 鑑定書のイメージ */
+  .preview-wrap{text-align:center;margin-top:34px;}
+  .preview-wrap svg{width:100%;max-width:430px;height:auto;}
+  .preview-cap{
+    font-size:12.5px;max-width:480px;margin:14px auto 0;
+    line-height:1.9;color:var(--ink-soft);
+  }
   .for-you{
     margin-top:32px;padding:24px 26px;border-left:3px solid var(--green);
     background:rgba(125,140,114,.08);font-size:13.5px;color:var(--ink-soft);
@@ -278,7 +285,7 @@
         <div class="moon" aria-hidden="true">🌕</div>
         <span class="tag">はじめての方はここから</span>
         <h3>① メール鑑定</h3>
-        <p>本質・感情・才能・仕事・人間関係・人生の転機まで、出生図全体を丁寧に読み解きます。現在のお悩みや知りたいことと一つにつなげ、約8,000字を目安にした鑑定書（PDF）として全文書き下ろしでお届けします。</p>
+        <p>本質・感情・才能・仕事・人間関係・人生の転機まで、出生図全体を丁寧に読み解きます。星座だけでなく、その性質が<b>どの分野で出るか（ハウス）</b>、<b>なぜ起きるか（アスペクト）</b>、<b>いつ動くか（時期）</b>まで見ていきます。現在のお悩みや知りたいことと一つにつなげ、A4で15〜20ページの鑑定書（PDF）として全文書き下ろしでお届けします。</p>
         <p class="price"><b>9,800</b> 円（税込）</p>
       </div>
 
@@ -349,11 +356,47 @@
     <div class="deliverable fade">
       <h3>お手元に届くもの</h3>
       <div class="specs">
-        <div class="spec"><strong>約8,000字</strong>12項目・全文書き下ろしPDF</div>
+        <div class="spec"><strong>A4 15〜20ページ</strong>12項目・全文書き下ろしPDF</div>
         <div class="spec"><strong>10日以内</strong>お支払い確認後に制作</div>
         <div class="spec"><strong>ご質問2回</strong>お届け後3日以内</div>
       </div>
       <p class="note">テンプレートの流用はありません。出生図とお悩みを一つにつなげ、いまのあなたのためだけに最初の一文字から書き起こします。</p>
+    </div>
+
+    <!-- 鑑定書のイメージ -->
+    <div class="preview-wrap" aria-hidden="true">
+      <svg viewBox="0 0 400 265" xmlns="http://www.w3.org/2000/svg">
+        <!-- うしろのページ -->
+        <g transform="rotate(-3 160 130)">
+          <rect x="45" y="22" width="252" height="216" rx="6" fill="#fbfaf3" stroke="#c9d3cc" stroke-width="1.2"/>
+        </g>
+        <g transform="rotate(1.5 230 130)">
+          <rect x="90" y="18" width="252" height="220" rx="6" fill="#fdfcf6" stroke="#c9d3cc" stroke-width="1.2"/>
+        </g>
+        <!-- まえのページ -->
+        <rect x="72" y="30" width="256" height="222" rx="6" fill="#fffdf7" stroke="#6e8784" stroke-width="1.5"/>
+        <rect x="79" y="37" width="242" height="208" rx="3" fill="none" stroke="#6e8784" stroke-width="1" opacity=".4"/>
+        <text x="200" y="62" text-anchor="middle" font-family="'Zen Maru Gothic',sans-serif" font-size="14" fill="#3d524c" letter-spacing="4">&#10022; 鑑定書 &#10023;</text>
+        <!-- 一、 -->
+        <text x="96" y="90" font-family="'Zen Maru Gothic',sans-serif" font-size="10.5" fill="#54706b" letter-spacing="1.5">一、生まれ持った本質</text>
+        <rect x="96" y="98" width="204" height="5" rx="2.5" fill="#e2e7e0"/>
+        <rect x="96" y="109" width="176" height="5" rx="2.5" fill="#e2e7e0"/>
+        <rect x="96" y="120" width="192" height="5" rx="2.5" fill="#e9e4d6"/>
+        <!-- 二、 -->
+        <text x="96" y="146" font-family="'Zen Maru Gothic',sans-serif" font-size="10.5" fill="#54706b" letter-spacing="1.5">二、感情と心の満たし方</text>
+        <rect x="96" y="154" width="196" height="5" rx="2.5" fill="#e2e7e0"/>
+        <rect x="96" y="165" width="208" height="5" rx="2.5" fill="#e9e4d6"/>
+        <rect x="96" y="176" width="150" height="5" rx="2.5" fill="#e2e7e0"/>
+        <!-- 三、 -->
+        <text x="96" y="202" font-family="'Zen Maru Gothic',sans-serif" font-size="10.5" fill="#54706b" letter-spacing="1.5">三、いま迎えているテーマ</text>
+        <rect x="96" y="210" width="188" height="5" rx="2.5" fill="#e2e7e0"/>
+        <rect x="96" y="221" width="120" height="5" rx="2.5" fill="#e2e7e0"/>
+        <text x="200" y="240" text-anchor="middle" font-family="'Zen Maru Gothic',sans-serif" font-size="9.5" fill="#8a9a95" letter-spacing="1">ほか、全12項目</text>
+        <!-- 金の星 -->
+        <path d="M312 88 l2.2 4.6 4.6.6-3.4 3.3.8 4.6-4.2-2.2-4.2 2.2.8-4.6-3.4-3.3 4.6-.6z" fill="#c9a86a"/>
+        <path d="M64 200 l1.8 3.8 3.8.5-2.8 2.7.7 3.8-3.5-1.8-3.5 1.8.7-3.8-2.8-2.7 3.8-.5z" fill="#c9a86a" opacity=".8"/>
+      </svg>
+      <p class="preview-cap">お届けする鑑定書のイメージです。A4で15〜20ページ、12項目の全文書き下ろし。「21ページも！と開いた瞬間驚きました」というお声もいただきました。すべて書き下ろしのため、中身は受けとった方だけのお楽しみに。</p>
     </div>
   </div>
 </section><!-- ===== リピート鑑定の詳細 ===== -->
@@ -432,8 +475,9 @@
         <p class="price"><b>¥9,800</b> <span>税込</span></p>
         <p class="summary">生まれ持った本質から、才能・仕事・人間関係・人生の節目まで。出生図全体と現在のお悩みをつなげて読み解きます。</p>
         <ul class="plan-points">
-          <li>12項目・約8,000字の全文書き下ろしPDF</li>
+          <li>12項目・A4で15〜20ページの全文書き下ろしPDF</li>
           <li>本質・感情・才能・仕事・恋愛・家族・人間関係</li>
+          <li>その性質がどの分野で出るか（ハウス）まで読み解き</li>
           <li>現在のテーマと、これから数年の節目</li>
           <li>いまのお悩み・知りたいことを個別に読み解き</li>
           <li>10日以内にお届け・確認質問に対応</li>
