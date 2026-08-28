@@ -705,6 +705,72 @@
     .app-card:hover{transform:none}
   }
 </style>
+<style id="kintsugi-repair">
+/* ══════════════════════════════════════════════════════════════
+   金継ぎ 追補スタイル【最小版】— 星よみ専門家おます 公式サイト
+   2026-08-28 ／ 金継ぎ診断の追補スタイル。既存のCSSはそのままに、後から上書きしています。
+
+   直すのは「明るい生成りの地の上で、文字が地に溶けている」ことだけ。
+   ・レイアウトは1ミリも動かしません（幅・段組み・余白・文字サイズは触らない）
+   ・夜空の節（ヒーロー／きょうの星もよう）も触りません
+   ・色は1本に潰さず、色相はそのまま。明度だけ下げています
+       金   #C9A86A → #8A6A2F（色相39°のまま）
+       紫   #8D7BB0 → #6E5D93（色相260°のまま）
+       緑   #6E8784 → #4F6E68（色相172°のまま）
+   ══════════════════════════════════════════════════════════════ */
+
+/* ── 金の文字（生成りの地の上）比2.07〜2.26 → 4.5以上 ───────── */
+.hoshikugiri,
+.news-date,
+.kado,
+.naiyou-num,
+.service .num,
+.voice .stars,
+footer .stars{
+  color:#8a6a2f;
+}
+
+/* 大きな★は「大文字」の床3.0でよいので、金みを多く残す */
+.rating-strip .big-stars{ color:#a8873f }
+
+/* ── くすみ緑の文字 比3.53〜3.84 → 4.5以上 ────────────────── */
+.michiru .cap,
+.obi,
+.voice .item-tag,
+.prof-name .en{
+  color:#4f6e68;
+}
+
+/* ── 紫の文字 比3.69 → 4.5以上 ───────────────────────────── */
+.kantei-lead em,
+.about-grid em,
+.book-tag,
+.books a.book p,
+.book-go,
+.channel .ch-desc{
+  color:#6e5d93;
+}
+
+/* ── 白い文字が載る面は、面の側を濃くする（文字は白のまま）──── */
+.kantei-chip,
+.cta-big{ background-color:#6e5d93 }
+.step-num{ background-color:#8a6a2f }
+.voices-more a,
+.service .go{ background-color:#4f6e68 }
+
+/* ── ここから下は「入れても入れなくてもよい」1ブロック ─────────
+   9.6px〜11.2px の極小文字が15件あります（タグと小ラベル）。
+   12px 未満は読めない扱いなので、12px まで上げるとその15件が消えます。
+   幅も並びも変わりません（文字が0.8〜2.4px大きくなるだけ）。
+   要らなければ、この最後のブロックごと消してください。 */
+.voice .item-tag,
+.book-tag,
+.ch-big .tag,
+.ch-big .st,
+.ch-big .st.b{
+  font-size:12px;
+}
+</style>
 </head>
 <body>
 
@@ -1053,6 +1119,11 @@
     表示は上から新しい順。古いものは削除して3〜5件程度を保つのがおすすめです。
   -->
   <div class="news-list">
+    <a class="news-item" href="kantei.html">
+      <span class="news-date">8月29日</span>
+      <span class="news-text">土曜日より、メール鑑定の一般受付を再開します</span>
+    </a>
+
     <a class="news-item" href="tarot/">
       <span class="news-date">7月26日</span>
       <span class="news-text">無料タロット「宵の占い処」を公開しました</span>
