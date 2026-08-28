@@ -770,6 +770,14 @@ footer .stars{
 .ch-big .st.b{
   font-size:12px;
 }
+
+/* ── できることが4枚になったので 2×2 に（2026-08-28）───────────
+   3列のままだと1枚270pxで本文が1行10〜16字しか入らず、
+   4枚目だけが次の行にぽつんと残る。2列にすると1枚415pxになり、
+   行が伸びて読みやすくなり、並びの釣り合いも取れる。 */
+@media (min-width:680px){
+  .services{ grid-template-columns:repeat(2,1fr) }
+}
 </style>
 </head>
 <body>
@@ -1124,6 +1132,11 @@ footer .stars{
       <span class="news-text">土曜日より、メール鑑定の一般受付を再開します</span>
     </a>
 
+    <a class="news-item" href="https://omasuuranaishi-a11y.github.io/omasu-uranai/" target="_blank" rel="noopener">
+      <span class="news-date">8月28日</span>
+      <span class="news-text">無料のホロスコープ占いを公開しました。転機の日付まで、登録なしで読めます</span>
+    </a>
+
     <a class="news-item" href="tarot/">
       <span class="news-date">7月26日</span>
       <span class="news-text">無料タロット「宵の占い処」を公開しました</span>
@@ -1446,6 +1459,23 @@ footer .stars{
       <h3>無料タロット</h3>
       <p>一枚引きとスリーカードは、登録なしですぐに使えます。問いに合わせて卓を選び、自分の気持ちを整理するための手がかりとしてお使いください。</p>
       <a class="go" href="tarot/">無料タロットを引く</a>
+    </div>
+
+    <div class="service">
+      <div class="icon">
+        <svg width="46" height="46" viewBox="0 0 46 46" aria-hidden="true">
+          <circle cx="23" cy="23" r="18" fill="none" stroke="#6e8784" stroke-width="1.5"/>
+          <circle cx="23" cy="23" r="12" fill="none" stroke="#6e8784" stroke-width="1" opacity=".55"/>
+          <path d="M23 5 L23 11 M41 23 L35 23 M23 41 L23 35 M5 23 L11 23"
+                stroke="#6e8784" stroke-width="1.2" stroke-linecap="round" opacity=".7"/>
+          <circle cx="30.5" cy="15.5" r="2.4" fill="#c9a86a"/>
+          <circle cx="15.5" cy="30.5" r="2" fill="#8d7bb0"/>
+        </svg>
+      </div>
+      <p class="num">その四</p>
+      <h3>無料ホロスコープ占い</h3>
+      <p>生年月日を入れるだけで、あなたの出生図と、いまの空を重ねた一枚が出ます。持って生まれた性質と、この先いちばん近い転機の日付まで、登録なしでご覧いただけます。</p>
+      <a class="go" href="https://omasuuranaishi-a11y.github.io/omasu-uranai/" target="_blank" rel="noopener">無料で占ってみる</a>
     </div>
 
   </div>
