@@ -428,6 +428,55 @@ textarea#question:focus{outline:none;border-color:var(--gold);box-shadow:0 0 16p
   .reading .r-body{font-size:.84rem}
 }
 </style>
+<style id="kintsugi-repair">
+/* ══════════════════════════════════════════════════════════════
+   金継ぎ 追補スタイル — 宵の占い処（tarot/index.html）
+   2026-08-28 ／ <head> の最後に足すだけで効く。
+
+   ① [破れ] 低コントラスト＋画素検査の違反7件
+   ② [破れ] 極小文字17件 … 12px未満をなくす
+   ③ [乱れ] 文字サイズの段数過多
+   配置は無変更。新しい色は足していない（元からある --gold と --gold-bright だけ使う）。
+   ══════════════════════════════════════════════════════════════ */
+
+/* ── ① 読めない文字 ─────────────────────────────────────────
+   原因は2つ。
+   (1) --gold-dim が rgba(216,180,106,.38) の半透明で、地に溶けていた
+   (2) 夜空の星（白・不透明度.38）が文字の裏に当たっていた
+   透明な金をやめて元からある不透明な金にし、星は少しだけ控えめにする。 */
+.brand,
+#veil p{
+  color:var(--gold-bright);   /* 星の上に載る文字。いちばん明るい金で床に届かせる */
+}
+.spread-card .sc-count{
+  color:var(--gold);          /* 不透明なカードの上なので、通常の金で足りる */
+}
+
+/* 星は消さずに、ひかえめに。またたきの山も同じだけ下げる */
+.star{ opacity:.24 }
+@keyframes twinkle{
+  0%,100%{ opacity:.07 }
+  50%{ opacity:.34 }
+}
+
+/* ── ②③ 極小文字と段数 ─────────────────────────────────────
+   本文は 12.8 / 13.8 の2段、ボタンは 12.8 / 13.4 の2段へ。
+   9.92px の鍵アイコンのラベルも 12.8px まで上げる。 */
+.brand,
+.subtitle,
+.spread-card .sc-desc,
+.spread-card .sc-en,
+.spread-card .sc-count,
+.spread-card .sc-lock,
+#gate-close{
+  font-size:12.8px;
+}
+.gate-text,
+.gate-mark{
+  font-size:13.8px;
+}
+#gate-line{ font-size:13.4px }
+</style>
 </head>
 <body>
 <div id="stars"></div>
