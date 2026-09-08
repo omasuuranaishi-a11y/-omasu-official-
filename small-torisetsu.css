@@ -1,0 +1,24 @@
+/* このセクション内だけを装飾する。既存の色・ヒーローには変更を加えない。 */
+#small-torisetsu .ts-intro { text-align:center; font-size:16px; line-height:2; }
+#small-torisetsu .ts-note { max-width:620px; margin:16px auto 32px; font-size:14px; line-height:1.9; }
+#small-torisetsu .ts-signs { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; align-items:start; }
+#small-torisetsu details { border:1px solid var(--line); background:var(--card); border-radius:8px; }
+#small-torisetsu summary { display:flex; align-items:center; gap:12px; padding:18px 16px; cursor:pointer; color:var(--green-ink); font-size:16px; list-style:none; }
+#small-torisetsu summary::-webkit-details-marker { display:none; }
+#small-torisetsu summary:focus-visible { outline:2px solid var(--green-ink); outline-offset:3px; }
+#small-torisetsu .ts-open { margin-left:auto; }
+#small-torisetsu details[open] { grid-column:1 / -1; }
+#small-torisetsu details[open] .ts-open { transform:rotate(45deg); }
+#small-torisetsu .ts-reading { border-top:1px solid var(--line); padding:24px; }
+#small-torisetsu .ts-reading h3 { font-size:22px; margin-bottom:24px; }
+#small-torisetsu .ts-reading h4 { color:var(--green-ink); font-size:16px; margin-top:20px; }
+#small-torisetsu .ts-reading p { font-size:16px; line-height:2; margin-top:8px; max-width:38em; }
+#small-torisetsu .ts-next { margin-top:32px; padding:28px 0; border-top:1px solid var(--line); text-align:center; }
+#small-torisetsu .ts-next h3 { font-size:20px; }
+#small-torisetsu .ts-next p { font-size:16px; margin:16px 0; }
+@media(max-width:600px) {
+  #small-torisetsu .ts-signs { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  #small-torisetsu summary { padding:16px 12px; gap:8px; }
+  #small-torisetsu .ts-reading { padding:20px; }
+  #small-torisetsu .ts-intro br,#small-torisetsu .ts-next br { display:none; }
+}
